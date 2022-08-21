@@ -1,8 +1,12 @@
 import { defaultTheme } from '@xstyled/styled-components';
 
 const theme = {
-  ...defaultTheme
-  // Customize your theme here
+  ...defaultTheme,
+  colors: {
+    blue: '#014F86',
+    white: '#FFFFFF',
+    warning: '#D47171'
+  }
 };
 
 export default theme;
