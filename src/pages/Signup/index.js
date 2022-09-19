@@ -1,7 +1,7 @@
 import { RegisterType } from 'components/buttons/RegisterType';
 import { H1 } from 'components/font-styles';
 import { x } from '@xstyled/styled-components';
-import { Layout } from 'core/Layout';
+import { Layout } from 'core/layout';
 
 const Register = () => {
   return (

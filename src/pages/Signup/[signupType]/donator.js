@@ -1,8 +1,8 @@
 import { DonatorRegisterInputs } from 'validations/donator-validations';
 import { Form } from 'components/Form';
 import { TextField } from 'components/TextField';
-import { Layout } from 'core/Layout';
-import { Button } from 'components/buttons/Button';
+import { Layout } from 'core/layout';
+import { Button } from 'components/buttons/button';
 import { H1, P } from 'components/font-styles';
 import { useSignUp } from 'hooks/mutations/auth';
 

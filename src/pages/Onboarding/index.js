@@ -1,7 +1,7 @@
 import { x } from '@xstyled/styled-components';
 import { Logo } from 'components/Logo';
-import { Layout } from 'core/Layout';
-import { Button } from 'components/buttons/Button';
+import { Layout } from 'core/layout';
+import { Button } from 'components/buttons/button';
 import { P } from 'components/font-styles';
 import { useCurrentUser } from 'hooks/queries/useCurrentUser';
 

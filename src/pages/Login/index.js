@@ -1,10 +1,10 @@
 import { x } from '@xstyled/styled-components';
-import { Layout } from 'core/Layout';
+import { Layout } from 'core/layout';
 import { Form } from 'components/Form';
 import { TextField } from 'components/TextField';
 import { DonatorLoginInputs } from 'validations/donator-validations';
 import { Link } from 'react-router-dom';
-import { Button } from 'components/buttons/Button';
+import { Button } from 'components/buttons/button';
 import { H1, P } from 'components/font-styles';
 import { useLogin } from 'hooks/mutations/auth';
 

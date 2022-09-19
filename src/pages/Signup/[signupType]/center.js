@@ -1,12 +1,12 @@
 import { x } from '@xstyled/styled-components';
 import { Form } from 'components/Form';
 import { TextField } from 'components/TextField';
-import { Layout } from 'core/Layout';
+import { Layout } from 'core/layout';
 import {
   CenterRegisterInputs,
   validateImage
 } from 'validations/center-validations';
-import { Button } from 'components/buttons/Button';
+import { Button } from 'components/buttons/button';
 import { H1, P } from 'components/font-styles';
 import { useSignUp } from 'hooks/mutations/auth';
 import { useState } from 'react';
