@@ -36,7 +36,7 @@ export const AuthProvider = ({ children }) => {
     const interceptors = applyInterceptors(accessToken);
 
     return () => clearInterceptors(interceptors);
-  }, []);
+  }, [accessToken]);
 
   return (
     <AuthContext.Provider value={{ user, isAuthenticated, setState }}>
