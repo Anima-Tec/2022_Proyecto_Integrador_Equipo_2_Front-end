@@ -2,7 +2,7 @@ import axios from 'axios';
 import { clearSession } from 'utils/localStorage-helper';
 
 export const router = axios.create({
-  baseURL: 'http://localhost:4000/api-alidar',
+  baseURL: process.env.REACT_APP_API_URL,
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json'
