@@ -1,18 +1,17 @@
+import { Suspense } from 'react';
+import { useAuth } from 'contexts/auth';
 import { BrowserRouter } from 'react-router-dom';
-import { ThemeProvider, Preflight } from '@xstyled/styled-components';
-import theme from 'config/theme';
-import Authenticated from 'routers/authenticated';
-import Unauthenticated from 'routers/unauthenticated';
+import { FullScreenLoader } from 'components/Loader';
+import { Authenticated, Unauthenticated } from 'routers/index';
 
 export default function App() {
-  const isAuthorized = false;
+  const { isAuthenticated } = useAuth();
 
   return (
-    <ThemeProvider theme={theme}>
-      <Preflight />
-      <BrowserRouter>
-        {isAuthorized ? <Authenticated /> : <Unauthenticated />}
-      </BrowserRouter>
-    </ThemeProvider>
+    <BrowserRouter>
+      <Suspense fallback={<FullScreenLoader />}>
+        {isAuthenticated ? <Authenticated /> : <Unauthenticated />}
+      </Suspense>
+    </BrowserRouter>
   );
 }
