@@ -6,14 +6,14 @@ const ButtonStyleType = {
   minimal: 'minimal'
 };
 
-export default function Button({ buttonStyle = 'primary', text, ...rest }) {
+export function Button({ buttonStyle = 'primary', text, ...rest }) {
   return (
     <x.button
       w="100%"
       py="13px"
       borderRadius={100}
       transition
-      transitionDuration={200}
+      transitionDuration={300}
       bg={{
         _:
           buttonStyle === 'primary'
@@ -35,6 +35,7 @@ export default function Button({ buttonStyle = 'primary', text, ...rest }) {
             : buttonStyle === 'minimal' && 'white'
       }}
       borderColor="blue"
+      style={{ outline: 'none' }}
       border={1}
       {...rest}
     >
