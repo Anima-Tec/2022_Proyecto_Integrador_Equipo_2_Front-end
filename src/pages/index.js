@@ -1,9 +1,11 @@
 import { x } from '@xstyled/styled-components';
-import Layout from 'core/layout';
+import { Layout } from 'core/Layout';
 import { useNavigate } from 'react-router-dom';
-import Button from 'components/buttons/button';
+import { Button } from 'components/buttons/Button';
+import { P } from 'components/font-styles';
+import { Logo } from 'components/Logo';
 
-export default function Index() {
+const Index = () => {
   const navigate = useNavigate();
 
   return (
@@ -21,18 +23,33 @@ export default function Index() {
           flexDirection="column"
           justifyContent="center"
           alignItems="center"
+          gap="40px"
         >
-          <x.img src="/logo.png" w="303px" h="303px" mb="55px" />
+          <Logo width="303px" height="303px" />
+          <P textAlign="center" w="80%">
+            Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem
+            Lorem
+          </P>
         </x.div>
-        <x.div display="flex" w="100%" gap="33px">
-          <Button text="Iniciar sesion" onClick={() => navigate('/login')} />
+        <x.div
+          display="flex"
+          flexDirection={{ _: 'column', lg: 'row' }}
+          w="100%"
+          gap="33px"
+        >
+          <Button
+            text="Iniciar sesion"
+            onClick={() => navigate('/auth/login')}
+          />
           <Button
             buttonStyle="minimal"
             text="Registrate"
-            onClick={() => navigate('/register')}
+            onClick={() => navigate('/auth/signup')}
           />
         </x.div>
       </x.div>
     </Layout>
   );
-}
+};
+
+export default Index;
