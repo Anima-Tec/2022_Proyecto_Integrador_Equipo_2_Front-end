@@ -5,7 +5,7 @@ export const CenterLoginInputs = yup.object({
     .string()
     .email('Email invalido')
     .required('Debe ingresar un email'),
-  password: yup.string().min(3, 'Debe tener al menos 3 caracteres')
+  password: yup.string().min(6, 'Debe tener al menos 6 caracteres')
 });
 
 const MAX_FILE_SIZE = 5000000; //  1MB = 1 million of bytes => 5MB = 5 million of bytes

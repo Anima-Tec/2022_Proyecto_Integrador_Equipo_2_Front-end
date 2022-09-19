@@ -5,7 +5,7 @@ export const DonatorLoginInputs = yup.object({
     .string()
     .email('Email invalido')
     .required('Debe ingresar un email'),
-  password: yup.string().min(3, 'Debe tener al menos 3 caracteres')
+  password: yup.string().min(6, 'Debe tener al menos 6 caracteres')
 });
 
 export const DonatorRegisterInputs = yup.object({
