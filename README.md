@@ -12,10 +12,10 @@ npm i # install dependencies
 ```
 
 ## Run the app
+Open http://localhost:3000 in your browser to see the app.
 ```
 npm start
 ```
-Open http://localhost:3000 in your browser to see the app.
 
 ## Environment Variables
 
