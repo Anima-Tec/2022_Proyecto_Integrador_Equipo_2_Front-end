@@ -12,8 +12,4 @@ export class AuthService {
   static async logout(user) {
     return await router.post('/auth/logout', user);
   }
-
-  static async getCurrentUser({ where: { rol, id } }) {
-    return await router.get(`/${rol.toLowerCase()}s/${id}`);
-  }
 }
