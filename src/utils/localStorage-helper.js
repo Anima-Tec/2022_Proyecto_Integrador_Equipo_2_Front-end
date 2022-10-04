@@ -2,11 +2,15 @@ export const getCurrentUser = () => {
   return JSON.parse(localStorage.getItem('user'));
 };
 
+export const updateLocalUser = data => {
+  localStorage.setItem('user', JSON.stringify(data));
+};
+
 export const getLocalAccessToken = () => {
   const accessToken =
-    (localStorage.getItem('accessToken') &&
-      JSON.parse(localStorage.getItem('accessToken'))) ||
-    null;
+    localStorage.getItem('accessToken') &&
+    JSON.parse(localStorage.getItem('accessToken'));
+
   return accessToken;
 };
 
@@ -22,6 +26,7 @@ export const isStoredAccesToken = !!getLocalAccessToken();
 
 const SessionService = {
   getCurrentUser,
+  updateLocalUser,
   getLocalAccessToken,
   updateLocalAccessToken,
   clearSession,

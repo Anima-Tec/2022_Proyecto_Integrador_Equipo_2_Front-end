@@ -1,17 +1,17 @@
 import { DonatorRegisterInputs } from 'validations/donator-validations';
 import { Form } from 'components/Form';
 import { TextField } from 'components/TextField';
-import { Layout } from 'core/layout';
-import { Button } from 'components/buttons/button';
+import { Layout } from 'core/Layout';
+import { Button } from 'components/buttons/Button';
 import { H1, P } from 'components/font-styles';
-import { useSignUp } from 'hooks/mutations/auth';
+import { useSignUp } from 'hooks/auth/mutations/useSignUp';
 
 const Register = () => {
-  const { mutate, error } = useSignUp();
+  const [mutateAsync, error] = useSignUp();
 
-  const handdleSubmit = formData => {
+  const handdleSubmit = async formData => {
     try {
-      mutate(formData);
+      await mutateAsync(formData);
     } catch (err) {
       console.log(err);
     }

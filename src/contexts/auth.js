@@ -1,8 +1,7 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState } from 'react';
 
 import PropTypes from 'prop-types';
 import SessionService from 'utils/localStorage-helper';
-import { applyInterceptors, clearInterceptors } from 'networking/axios';
 
 export const initialState = {
   user: null,
@@ -28,25 +27,20 @@ const loadState = () => {
 };
 
 export const AuthProvider = ({ children }) => {
-  const [{ user, accessToken, isAuthenticated }, setState] = useState(
-    loadState()
-  );
-
-  useEffect(() => {
-    const interceptors = applyInterceptors(accessToken);
-
-    return () => clearInterceptors(interceptors);
-  }, [accessToken]);
+  const [{ user, accessToken, isAuthenticated }, setState] =
+    useState(loadState);
 
   return (
-    <AuthContext.Provider value={{ user, isAuthenticated, setState }}>
+    <AuthContext.Provider
+      value={{ user, isAuthenticated, accessToken, setState }}
+    >
       {children}
     </AuthContext.Provider>
   );
 };
 
+export const useAuth = () => useContext(AuthContext);
+
 AuthProvider.propTypes = {
   children: PropTypes.node.isRequired
 };
-
-export const useAuth = () => useContext(AuthContext);

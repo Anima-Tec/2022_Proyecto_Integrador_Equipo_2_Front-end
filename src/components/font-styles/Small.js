@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 export function Small({ children, ...rest }) {
   return (
     <x.small
-      fontFamily="Open Sans"
+      fontFamily="Inter"
       fontWeight="normal"
       fontStyle="normal"
       fontSize="xs"
-      lineHeight={6}
+      lineHeight="12px"
       {...rest}
     >
       {children}
@@ -17,5 +17,5 @@ export function Small({ children, ...rest }) {
 }
 
 Small.propTypes = {
-  children: PropTypes.string.isRequired
+  children: PropTypes.node.isRequired
 };

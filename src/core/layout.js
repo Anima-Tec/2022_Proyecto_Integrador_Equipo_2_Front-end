@@ -14,10 +14,7 @@ export function Layout({ children, ...rest }) {
       <x.div
         w={{ _: '100%', lg: '60%' }}
         minHeight="100vh"
-        p={{ _: '50px', lg: '84px' }}
-        display="flex"
-        flexDirection="column"
-        alignItems="center"
+        p={{ _: '30px', lg: '84px' }}
         boxShadow={{ lg: '0px 4px 20px rgba(0, 0, 0, 0.1)' }}
       >
         {children}

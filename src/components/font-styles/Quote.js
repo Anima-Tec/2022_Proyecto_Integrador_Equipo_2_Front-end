@@ -17,5 +17,5 @@ export function Quote({ children, ...rest }) {
 }
 
 Quote.propTypes = {
-  children: PropTypes.string.isRequired
+  children: PropTypes.node.isRequired
 };

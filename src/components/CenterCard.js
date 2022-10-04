@@ -1,7 +1,7 @@
 import { x } from '@xstyled/styled-components';
-import P from 'componetes/font-styles/P';
+import { P } from 'components/font-styles';
 
-export default function CenterCard() {
+export function CenterCard() {
   return (
     <x.div
       w="100%"
@@ -12,7 +12,8 @@ export default function CenterCard() {
       gap="26px"
     >
       <x.img
-        src="/image.type"
+        src="/center-ilustration.jpeg"
+        alt="Center Ilustration"
         w={{ _: '112px', lg: '203px' }}
         h={{ _: '90px', lg: '153px' }}
         borderRadius="20px"
@@ -30,10 +31,10 @@ export default function CenterCard() {
         </P>
         <P fontSize={{ _: '12px', lg: '16px' }}>Se requieren alimentos </P>
         <P fontSize={{ _: '12px', lg: '16px' }}>Se requieren voluntarios </P>
+        <P fontSize={{ _: '12px', lg: '16px' }} textAlign="end">
+          Toca para más detalles
+        </P>
       </x.div>
-      <P fontSize={{ _: '12px', lg: '16px' }} textAlign="end">
-        Toca para más detalles
-      </P>
     </x.div>
   );
 }

@@ -1,19 +1,19 @@
 import { x } from '@xstyled/styled-components';
-import { Layout } from 'core/layout';
+import { Layout } from 'core/Layout';
 import { Form } from 'components/Form';
 import { TextField } from 'components/TextField';
 import { DonatorLoginInputs } from 'validations/donator-validations';
 import { Link } from 'react-router-dom';
-import { Button } from 'components/buttons/button';
+import { Button } from 'components/buttons/Button';
 import { H1, P } from 'components/font-styles';
-import { useLogin } from 'hooks/mutations/auth';
+import { useLogin } from 'hooks/auth/mutations/useLogin';
 
 const Login = () => {
-  const { mutate, error } = useLogin();
+  const [mutateAsync, error] = useLogin();
 
-  const handdleSubmit = formData => {
+  const handdleSubmit = async formData => {
     try {
-      mutate(formData);
+      await mutateAsync(formData);
     } catch (err) {
       console.log(err);
     }

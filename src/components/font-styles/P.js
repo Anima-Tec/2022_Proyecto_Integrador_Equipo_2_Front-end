@@ -8,7 +8,7 @@ export function P({ children, ...rest }) {
       fontWeight="400"
       fontStyle="normal"
       fontSize="16px"
-      lineHeight="30px"
+      // lineHeight="30px"
       {...rest}
     >
       {children}
@@ -17,5 +17,5 @@ export function P({ children, ...rest }) {
 }
 
 P.propTypes = {
-  children: PropTypes.string.isRequired
+  children: PropTypes.node.isRequired
 };

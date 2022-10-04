@@ -1,44 +1,72 @@
 import { x } from '@xstyled/styled-components';
-import { Logo } from 'components/Logo';
-import { Layout } from 'core/layout';
-import { Button } from 'components/buttons/button';
-import { P } from 'components/font-styles';
-import { useCurrentUser } from 'hooks/queries/useCurrentUser';
+import { useUpdateUser } from 'hooks/user/mutations/updateUser';
+import { useCurrentUser } from 'hooks/user/queries/useCurrentUser';
+import { Button } from 'components/buttons/Button';
+import { OnboardingLayout } from 'core/OnboardingLayout';
+import { OnboardingStep } from 'components/onboarding/OnboardingStep';
+import { useNavigate } from 'react-router-dom';
 
 const Onboarding = () => {
-  const { isLoading, error, data } = useCurrentUser();
+  const navigate = useNavigate();
+  const { data: user, refetch: refetchUser } = useCurrentUser();
+  const [mutateAsync, error] = useUpdateUser();
+
+  if (error) {
+    console.log(error);
+  }
 
   return (
-    !isLoading && (
-      <Layout>
-        <x.div
-          w="100%"
-          h="100%"
-          display="flex"
-          flexDirection="column"
-          justifyContent="space-between"
-          alignItems="center"
-        >
-          <x.div
-            display="flex"
-            flexDirection="column"
-            justifyContent="center"
-            alignItems="center"
-            gap="40px"
-          >
-            <Logo width="303px" height="303px" />
-            <P textAlign="center" w="80%">
-              ¡Bienvenido {data?.name} a ALIDAR! Donde podras aportar tu granito
-              de arena donando comida a quienes necesitan.
-            </P>
-          </x.div>
+    <OnboardingLayout
+      justifyContent={user?.onboardingStepPosition !== 3 && 'space-between'}
+    >
+      <OnboardingStep user={user} />
+      <x.div
+        position="fixed"
+        left={0}
+        bottom={0}
+        right={0}
+        px={{ _: '30px', lg: '84px' }}
+        pb="55px"
+        m="auto"
+        w="inherit"
+        display="flex"
+        gap={{ _: '2rem', lg: '5rem' }}
+        bg="white"
+      >
+        {user?.onboardingStepPosition !== 0 && (
           <Button
-            text="CONTINUAR"
-            onClick={() => console.log('next step onboarding')}
+            text="Anterior"
+            buttonStyle="minimal"
+            onClick={async () => {
+              if (user?.onboardingStepPosition >= 0) {
+                await mutateAsync({
+                  onboardingStepPosition: user?.onboardingStepPosition - 1
+                });
+                refetchUser();
+              }
+            }}
           />
-        </x.div>
-      </Layout>
-    )
+        )}
+        <Button
+          text="Siguiente"
+          onClick={async () => {
+            if (user?.onboardingStepPosition <= 3) {
+              await mutateAsync({
+                onboardingStepPosition:
+                  user?.onboardingStepPosition === 3
+                    ? -1
+                    : user?.onboardingStepPosition + 1
+              });
+
+              refetchUser();
+            }
+            if (user?.onboardingStepPosition === 3) {
+              navigate('/home');
+            }
+          }}
+        />
+      </x.div>
+    </OnboardingLayout>
   );
 };
 

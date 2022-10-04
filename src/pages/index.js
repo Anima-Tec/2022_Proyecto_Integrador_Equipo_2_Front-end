@@ -1,7 +1,7 @@
 import { x } from '@xstyled/styled-components';
-import { Layout } from 'core/layout';
+import { Layout } from 'core/Layout';
 import { useNavigate } from 'react-router-dom';
-import { Button } from 'components/buttons/button';
+import { Button } from 'components/buttons/Button';
 import { P } from 'components/font-styles';
 import { Logo } from 'components/Logo';
 
