@@ -1,5 +1,5 @@
-import { x } from '@xstyled/styled-components';
-import { P } from 'components/font-styles';
+import { x } from '@xstyled/styled-components'
+import { P } from 'components/font-styles'
 
 export function CenterCard() {
   return (
@@ -36,5 +36,5 @@ export function CenterCard() {
         </P>
       </x.div>
     </x.div>
-  );
+  )
 }

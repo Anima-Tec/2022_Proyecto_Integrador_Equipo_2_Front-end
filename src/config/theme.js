@@ -1,4 +1,4 @@
-import { defaultTheme } from '@xstyled/styled-components';
+import { defaultTheme } from '@xstyled/styled-components'
 
 const theme = {
   ...defaultTheme,
@@ -8,8 +8,8 @@ const theme = {
     white: '#FFFFFF',
     warning: '#D47171',
     'red-mail': '#DB4437',
-    'green-wpp': '#25D366'
-  }
-};
+    'green-wpp': '#25D366',
+  },
+}
 
-export { theme };
+export { theme }

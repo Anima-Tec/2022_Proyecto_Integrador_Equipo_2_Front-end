@@ -1,9 +1,9 @@
-import { x } from '@xstyled/styled-components';
-import { H2, P } from 'components/font-styles';
-import PropTypes from 'prop-types';
-import { ContactButton } from 'components/buttons/ContactButton';
-import { NeedFoodList } from 'components/centers/NeedFoodsList';
-import { StepCounter } from 'components/StepCounter';
+import { x } from '@xstyled/styled-components'
+import { H2, P } from 'components/font-styles'
+import PropTypes from 'prop-types'
+import { ContactButton } from 'components/buttons/ContactButton'
+import { NeedFoodList } from 'components/centers/NeedFoodsList'
+import { StepCounter } from 'components/StepCounter'
 
 export const CenterInformationScreen = ({ step }) => {
   return (
@@ -25,12 +25,7 @@ export const CenterInformationScreen = ({ step }) => {
           <P fontWeight="bold" mb="20px">
             Ubicación
           </P>
-          <x.img
-            src="/mapa-ilustration.png"
-            w={{ _: '302px', lg: '352px' }}
-            h={{ _: '166', lg: '216' }}
-            mb="5px"
-          />
+          <x.img src="/mapa-ilustration.png" w={{ _: '302px', lg: '352px' }} h={{ _: '166', lg: '216' }} mb="5px" />
           <P fontSize="12px" textAlign="center" color="#555555">
             Trueba 2345 esquina Maldonado
           </P>
@@ -40,27 +35,27 @@ export const CenterInformationScreen = ({ step }) => {
         <ContactButton type="WHATSAPP" mb="30px" cursor="default" />
       </x.div>
     </>
-  );
-};
+  )
+}
 
 CenterInformationScreen.propTypes = {
-  step: PropTypes.number.isRequired
-};
+  step: PropTypes.number.isRequired,
+}
 
 export const foods = [
   {
     name: 'Fideos',
     amount: 2,
-    unitMeasurement: 'KG'
+    unitMeasurement: 'KG',
   },
   {
     name: 'Agua',
     amount: 10,
-    unitMeasurement: 'L'
+    unitMeasurement: 'L',
   },
   {
     name: 'Harina',
     amount: 3,
-    unitMeasurement: 'KG'
-  }
-];
+    unitMeasurement: 'KG',
+  },
+]

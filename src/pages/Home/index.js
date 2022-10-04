@@ -1,7 +1,7 @@
-import { x } from '@xstyled/styled-components';
+import { x } from '@xstyled/styled-components'
 
 const Home = () => {
-  return <x.div>Home page</x.div>;
-};
+  return <x.div>Home page</x.div>
+}
 
-export default Home;
+export default Home

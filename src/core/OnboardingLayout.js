@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import { x } from '@xstyled/styled-components';
+import PropTypes from 'prop-types'
+import { x } from '@xstyled/styled-components'
 
 export function OnboardingLayout({ children, ...rest }) {
   return (
@@ -17,9 +17,9 @@ export function OnboardingLayout({ children, ...rest }) {
     >
       {children}
     </x.div>
-  );
+  )
 }
 
 OnboardingLayout.propTypes = {
-  children: PropTypes.node
-};
+  children: PropTypes.node,
+}

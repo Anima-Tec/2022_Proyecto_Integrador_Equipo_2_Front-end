@@ -1,46 +1,41 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState } from 'react'
 
-import PropTypes from 'prop-types';
-import SessionService from 'utils/localStorage-helper';
+import PropTypes from 'prop-types'
+import SessionService from 'utils/localStorage-helper'
 
 export const initialState = {
   user: null,
   accessToken: null,
-  isAuthenticated: false
-};
+  isAuthenticated: false,
+}
 
-export const AuthContext = createContext(initialState);
+export const AuthContext = createContext(initialState)
 
 const loadState = () => {
-  const user = SessionService.getCurrentUser();
-  const storedAccessToken = SessionService.getLocalAccessToken();
+  const user = SessionService.getCurrentUser()
+  const storedAccessToken = SessionService.getLocalAccessToken()
 
   if (SessionService.isStoredAccesToken) {
     return {
       user,
       accessToken: storedAccessToken,
-      isAuthenticated: true
-    };
+      isAuthenticated: true,
+    }
   }
 
-  return initialState;
-};
+  return initialState
+}
 
 export const AuthProvider = ({ children }) => {
-  const [{ user, accessToken, isAuthenticated }, setState] =
-    useState(loadState);
+  const [{ user, accessToken, isAuthenticated }, setState] = useState(loadState)
 
   return (
-    <AuthContext.Provider
-      value={{ user, isAuthenticated, accessToken, setState }}
-    >
-      {children}
-    </AuthContext.Provider>
-  );
-};
+    <AuthContext.Provider value={{ user, isAuthenticated, accessToken, setState }}>{children}</AuthContext.Provider>
+  )
+}
 
-export const useAuth = () => useContext(AuthContext);
+export const useAuth = () => useContext(AuthContext)
 
 AuthProvider.propTypes = {
-  children: PropTypes.node.isRequired
-};
+  children: PropTypes.node.isRequired,
+}

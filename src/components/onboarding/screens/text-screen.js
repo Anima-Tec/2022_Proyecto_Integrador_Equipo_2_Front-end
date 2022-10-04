@@ -1,7 +1,7 @@
-import { x } from '@xstyled/styled-components';
-import { Logo } from 'components/Logo';
-import PropTypes from 'prop-types';
-import { StepCounter } from 'components/StepCounter';
+import { x } from '@xstyled/styled-components'
+import { Logo } from 'components/Logo'
+import PropTypes from 'prop-types'
+import { StepCounter } from 'components/StepCounter'
 
 export const TextScreen = ({ children, step }) => {
   return (
@@ -12,10 +12,10 @@ export const TextScreen = ({ children, step }) => {
         {children}
       </x.div>
     </>
-  );
-};
+  )
+}
 
 TextScreen.propTypes = {
   children: PropTypes.node.isRequired,
-  step: PropTypes.number
-};
+  step: PropTypes.number,
+}

@@ -1,13 +1,13 @@
-import PropTypes from 'prop-types';
-import { useForm, FormProvider } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { x } from '@xstyled/styled-components';
+import PropTypes from 'prop-types'
+import { useForm, FormProvider } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { x } from '@xstyled/styled-components'
 
 export function Form({ children, schema, defaultValues, onSubmit, onCancel }) {
   const { handleSubmit, ...methods } = useForm({
     defaultValues,
-    resolver: yupResolver(schema)
-  });
+    resolver: yupResolver(schema),
+  })
 
   return (
     <FormProvider {...methods}>
@@ -17,7 +17,7 @@ export function Form({ children, schema, defaultValues, onSubmit, onCancel }) {
         </x.div>
       </x.form>
     </FormProvider>
-  );
+  )
 }
 
 Form.propTypes = {
@@ -25,5 +25,5 @@ Form.propTypes = {
   schema: PropTypes.any.isRequired,
   defaultValues: PropTypes.object,
   onSubmit: PropTypes.func.isRequired,
-  onCancel: PropTypes.func
-};
+  onCancel: PropTypes.func,
+}

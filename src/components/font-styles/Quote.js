@@ -1,5 +1,5 @@
-import { x } from '@xstyled/styled-components';
-import PropTypes from 'prop-types';
+import { x } from '@xstyled/styled-components'
+import PropTypes from 'prop-types'
 
 export function Quote({ children, ...rest }) {
   return (
@@ -13,9 +13,9 @@ export function Quote({ children, ...rest }) {
     >
       {children}
     </x.blockquote>
-  );
+  )
 }
 
 Quote.propTypes = {
-  children: PropTypes.node.isRequired
-};
+  children: PropTypes.node.isRequired,
+}

@@ -1,12 +1,12 @@
-import PropTypes from 'prop-types';
-import { x } from '@xstyled/styled-components';
-import { useFormContext } from 'react-hook-form';
+import PropTypes from 'prop-types'
+import { x } from '@xstyled/styled-components'
+import { useFormContext } from 'react-hook-form'
 
 export function FileField({ label, name, onChange, ...rest }) {
   const {
     register,
-    formState: { errors }
-  } = useFormContext();
+    formState: { errors },
+  } = useFormContext()
 
   return (
     <>
@@ -15,7 +15,7 @@ export function FileField({ label, name, onChange, ...rest }) {
         id="selectFile"
         display="none"
         {...register(name, {
-          onChange
+          onChange,
         })}
         {...rest}
       />
@@ -32,11 +32,9 @@ export function FileField({ label, name, onChange, ...rest }) {
       >
         {label}
       </x.label>
-      {errors[name] && (
-        <x.small color="warning">{errors[name].message}</x.small>
-      )}
+      {errors[name] && <x.small color="warning">{errors[name].message}</x.small>}
     </>
-  );
+  )
 }
 
 FileField.propTypes = {
@@ -44,5 +42,5 @@ FileField.propTypes = {
   register: PropTypes.any,
   name: PropTypes.string,
   errors: PropTypes.any,
-  onChange: PropTypes.func
-};
+  onChange: PropTypes.func,
+}

@@ -1,18 +1,11 @@
-import { theme } from 'config/theme';
-import PropTypes from 'prop-types';
+import { theme } from 'config/theme'
+import PropTypes from 'prop-types'
 
-const { colors } = theme;
+const { colors } = theme
 
 export function Center({ color = 'icon-black', ...rest }) {
   return (
-    <svg
-      width="30"
-      height="30"
-      viewBox="0 0 30 30"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      {...rest}
-    >
+    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" {...rest}>
       <path
         d="M16.25 27.5H6.25C3.75 27.5 2.5 26.25 2.5 23.75V13.75C2.5 11.25 3.75 10 6.25 10H12.5V23.75C12.5 26.25 13.75 27.5 16.25 27.5Z"
         stroke={colors[color] ?? color}
@@ -70,9 +63,9 @@ export function Center({ color = 'icon-black', ...rest }) {
         strokeLinejoin="round"
       />
     </svg>
-  );
+  )
 }
 
 Center.propTypes = {
-  color: PropTypes.string
-};
+  color: PropTypes.string,
+}

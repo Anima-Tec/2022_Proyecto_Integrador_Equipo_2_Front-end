@@ -1,7 +1,7 @@
-import { theme } from 'config/theme';
-import PropTypes from 'prop-types';
+import { theme } from 'config/theme'
+import PropTypes from 'prop-types'
 
-const { colors } = theme;
+const { colors } = theme
 
 export function CloseCircle({ color = 'icon-black', ...rest }) {
   return (
@@ -36,9 +36,9 @@ export function CloseCircle({ color = 'icon-black', ...rest }) {
         strokeLinejoin="round"
       />
     </svg>
-  );
+  )
 }
 
 CloseCircle.propTypes = {
-  color: PropTypes.string
-};
+  color: PropTypes.string,
+}

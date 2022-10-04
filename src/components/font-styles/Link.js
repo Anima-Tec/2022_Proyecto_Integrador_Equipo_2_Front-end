@@ -1,5 +1,5 @@
-import { x } from '@xstyled/styled-components';
-import PropTypes from 'prop-types';
+import { x } from '@xstyled/styled-components'
+import PropTypes from 'prop-types'
 
 export function Link({ children, ...rest }) {
   return (
@@ -14,9 +14,9 @@ export function Link({ children, ...rest }) {
     >
       {children}
     </x.a>
-  );
+  )
 }
 
 Link.propTypes = {
-  children: PropTypes.node.isRequired
-};
+  children: PropTypes.node.isRequired,
+}

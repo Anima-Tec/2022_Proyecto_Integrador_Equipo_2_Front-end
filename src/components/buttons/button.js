@@ -1,10 +1,10 @@
-import { x } from '@xstyled/styled-components';
-import PropTypes from 'prop-types';
+import { x } from '@xstyled/styled-components'
+import PropTypes from 'prop-types'
 
 const ButtonStyleType = {
   primary: 'primary',
-  minimal: 'minimal'
-};
+  minimal: 'minimal',
+}
 
 export function Button({ buttonStyle = 'primary', text, ...rest }) {
   return (
@@ -15,24 +15,12 @@ export function Button({ buttonStyle = 'primary', text, ...rest }) {
       transition
       transitionDuration={300}
       bg={{
-        _:
-          buttonStyle === 'primary'
-            ? 'blue'
-            : buttonStyle === 'minimal' && 'white',
-        hover:
-          buttonStyle === 'primary'
-            ? 'white'
-            : buttonStyle === 'minimal' && 'blue'
+        _: buttonStyle === 'primary' ? 'blue' : buttonStyle === 'minimal' && 'white',
+        hover: buttonStyle === 'primary' ? 'white' : buttonStyle === 'minimal' && 'blue',
       }}
       color={{
-        _:
-          buttonStyle === 'primary'
-            ? 'white'
-            : buttonStyle === 'minimal' && 'blue',
-        hover:
-          buttonStyle === 'primary'
-            ? 'blue'
-            : buttonStyle === 'minimal' && 'white'
+        _: buttonStyle === 'primary' ? 'white' : buttonStyle === 'minimal' && 'blue',
+        hover: buttonStyle === 'primary' ? 'blue' : buttonStyle === 'minimal' && 'white',
       }}
       borderColor="blue"
       style={{ outline: 'none' }}
@@ -41,10 +29,10 @@ export function Button({ buttonStyle = 'primary', text, ...rest }) {
     >
       {text}
     </x.button>
-  );
+  )
 }
 
 Button.propTypes = {
   buttonStyle: PropTypes.oneOf(Object.keys(ButtonStyleType)),
-  text: PropTypes.string.isRequired
-};
+  text: PropTypes.string.isRequired,
+}

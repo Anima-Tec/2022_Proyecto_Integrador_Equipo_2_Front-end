@@ -1,9 +1,9 @@
-import { x } from '@xstyled/styled-components';
-import { H2 } from 'components/font-styles';
-import PropTypes from 'prop-types';
-import { StepCounter } from 'components/StepCounter';
-import { FoodItem } from 'components/FoodItem';
-import { foods } from './center-information-screen';
+import { x } from '@xstyled/styled-components'
+import { H2 } from 'components/font-styles'
+import PropTypes from 'prop-types'
+import { StepCounter } from 'components/StepCounter'
+import { FoodItem } from 'components/FoodItem'
+import { foods } from './center-information-screen'
 
 export const CenterFoodScreen = ({ step }) => {
   return (
@@ -32,19 +32,15 @@ export const CenterFoodScreen = ({ step }) => {
             Modificar alimentos
           </H2>
           {foods.map((food, index) => (
-            <FoodItem
-              key={index}
-              food={food}
-              mb={index !== foods.length - 1 && { _: '20px', lg: '35px' }}
-            />
+            <FoodItem key={index} food={food} mb={index !== foods.length - 1 && { _: '20px', lg: '35px' }} />
           ))}
         </x.div>
         <H2 textAlign="center">Manten actualizada tu información</H2>
       </x.div>
     </>
-  );
-};
+  )
+}
 
 CenterFoodScreen.propTypes = {
-  step: PropTypes.number.isRequired
-};
+  step: PropTypes.number.isRequired,
+}

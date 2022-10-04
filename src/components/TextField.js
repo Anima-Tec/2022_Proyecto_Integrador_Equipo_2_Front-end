@@ -1,12 +1,12 @@
-import PropTypes from 'prop-types';
-import { x } from '@xstyled/styled-components';
-import { useFormContext } from 'react-hook-form';
+import PropTypes from 'prop-types'
+import { x } from '@xstyled/styled-components'
+import { useFormContext } from 'react-hook-form'
 
 export function TextField({ label, name, ...rest }) {
   const {
     register,
-    formState: { errors }
-  } = useFormContext();
+    formState: { errors },
+  } = useFormContext()
 
   return (
     <x.div display="flex" flexDirection="column">
@@ -22,16 +22,14 @@ export function TextField({ label, name, ...rest }) {
         {...register(name)}
         {...rest}
       />
-      {errors[name] && (
-        <x.small color="warning">{errors[name].message}</x.small>
-      )}
+      {errors[name] && <x.small color="warning">{errors[name].message}</x.small>}
     </x.div>
-  );
+  )
 }
 
 TextField.propTypes = {
   label: PropTypes.string,
   register: PropTypes.any,
   name: PropTypes.string,
-  errors: PropTypes.any
-};
+  errors: PropTypes.any,
+}

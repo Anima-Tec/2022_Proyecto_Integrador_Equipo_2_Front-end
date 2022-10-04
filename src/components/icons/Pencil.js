@@ -1,7 +1,7 @@
-import { theme } from 'config/theme';
-import PropTypes from 'prop-types';
+import { theme } from 'config/theme'
+import PropTypes from 'prop-types'
 
-const { colors } = theme;
+const { colors } = theme
 
 export function Pencil({ color = 'icon-black', ...rest }) {
   return (
@@ -36,9 +36,9 @@ export function Pencil({ color = 'icon-black', ...rest }) {
         strokeLinejoin="round"
       />
     </svg>
-  );
+  )
 }
 
 Pencil.propTypes = {
-  color: PropTypes.string
-};
+  color: PropTypes.string,
+}

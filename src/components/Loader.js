@@ -1,8 +1,8 @@
-import { x } from '@xstyled/styled-components';
-import { theme } from 'config/theme';
-import PropTypes from 'prop-types';
+import { x } from '@xstyled/styled-components'
+import { theme } from 'config/theme'
+import PropTypes from 'prop-types'
 
-const { colors } = theme;
+const { colors } = theme
 
 const Spinner = ({ color = 'white' }) => {
   return (
@@ -12,7 +12,7 @@ const Spinner = ({ color = 'white' }) => {
         margin: 'auto',
         background: 'none',
         display: 'block',
-        shapeRendering: 'auto'
+        shapeRendering: 'auto',
       }}
       width="200px"
       height="200px"
@@ -38,8 +38,8 @@ const Spinner = ({ color = 'white' }) => {
         ></animateTransform>
       </circle>
     </svg>
-  );
-};
+  )
+}
 
 export function FullScreenLoader({ ...rest }) {
   return (
@@ -58,9 +58,9 @@ export function FullScreenLoader({ ...rest }) {
     >
       <Spinner />
     </x.div>
-  );
+  )
 }
 
 Spinner.propTypes = {
-  color: PropTypes.string
-};
+  color: PropTypes.string,
+}

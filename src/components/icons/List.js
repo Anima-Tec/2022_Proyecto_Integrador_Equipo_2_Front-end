@@ -1,18 +1,11 @@
-import { theme } from 'config/theme';
-import PropTypes from 'prop-types';
+import { theme } from 'config/theme'
+import PropTypes from 'prop-types'
 
-const { colors } = theme;
+const { colors } = theme
 
 export function List({ color = 'icon-black', ...rest }) {
   return (
-    <svg
-      width="30"
-      height="30"
-      viewBox="0 0 30 30"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      {...rest}
-    >
+    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" {...rest}>
       <path
         d="M25.625 14.125V8.80001C25.625 3.76251 24.45 2.5 19.725 2.5H10.275C5.55 2.5 4.375 3.76251 4.375 8.80001V22.875C4.375 26.2 6.20001 26.9875 8.41251 24.6125L8.42499 24.6C9.44999 23.5125 11.0125 23.6 11.9 24.7875L13.1625 26.475"
         stroke={colors[color] ?? color}
@@ -51,9 +44,9 @@ export function List({ color = 'icon-black', ...rest }) {
         strokeLinejoin="round"
       />
     </svg>
-  );
+  )
 }
 
 List.propTypes = {
-  color: PropTypes.string
-};
+  color: PropTypes.string,
+}

@@ -1,8 +1,8 @@
-import { x } from '@xstyled/styled-components';
-import PropTypes from 'prop-types';
-import { P } from 'components/font-styles';
+import { x } from '@xstyled/styled-components'
+import PropTypes from 'prop-types'
+import { P } from 'components/font-styles'
 
-export const ContactType = ['GMAIL', 'WHATSAPP'];
+export const ContactType = ['GMAIL', 'WHATSAPP']
 
 const ContactButton = ({ type, ...rest }) => {
   return (
@@ -24,11 +24,11 @@ const ContactButton = ({ type, ...rest }) => {
       <x.img src={type === 'GMAIL' ? '/gmail-logo.png' : '/wpp-logo.png'} />
       <P>CONTACTARSE</P>
     </x.button>
-  );
-};
+  )
+}
 
-export { ContactButton };
+export { ContactButton }
 
 ContactButton.propTypes = {
-  type: PropTypes.oneOf(ContactType).isRequired
-};
+  type: PropTypes.oneOf(ContactType).isRequired,
+}

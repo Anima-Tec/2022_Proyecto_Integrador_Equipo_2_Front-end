@@ -1,6 +1,6 @@
-import { x } from '@xstyled/styled-components';
-import { P } from 'components/font-styles';
-import PropTypes from 'prop-types';
+import { x } from '@xstyled/styled-components'
+import { P } from 'components/font-styles'
+import PropTypes from 'prop-types'
 
 const NeedFoodList = ({ foods }) => {
   return (
@@ -8,12 +8,7 @@ const NeedFoodList = ({ foods }) => {
       <P fontWeight="bold" mb="15px">
         Se requieren los siguientes alimentos:
       </P>
-      <x.ul
-        listStyleType="disc"
-        listStylePosition="inside"
-        h={foods.length >= 6 && '10rem'}
-        overflowY="auto"
-      >
+      <x.ul listStyleType="disc" listStylePosition="inside" h={foods.length >= 6 && '10rem'} overflowY="auto">
         {foods.map((food, index) => (
           <x.li key={index} mb={index !== foods.length - 1 && '15px'}>
             {food.amount} {food.unitMeasurement} de {food.name}
@@ -21,8 +16,8 @@ const NeedFoodList = ({ foods }) => {
         ))}
       </x.ul>
     </x.div>
-  );
-};
+  )
+}
 
 NeedFoodList.propTypes = {
   foods: PropTypes.arrayOf(
@@ -30,9 +25,9 @@ NeedFoodList.propTypes = {
       name: PropTypes.string.isRequired,
       category: PropTypes.string.isRequired,
       amount: PropTypes.number.isRequired,
-      unitMeasurement: PropTypes.oneOf(['KG', 'BAG', 'G', 'ML', 'L'])
-    })
-  ).isRequired
-};
+      unitMeasurement: PropTypes.oneOf(['KG', 'BAG', 'G', 'ML', 'L']),
+    }),
+  ).isRequired,
+}
 
-export { NeedFoodList };
+export { NeedFoodList }

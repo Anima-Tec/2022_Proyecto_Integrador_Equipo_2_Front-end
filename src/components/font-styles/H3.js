@@ -1,5 +1,5 @@
-import { x } from '@xstyled/styled-components';
-import PropTypes from 'prop-types';
+import { x } from '@xstyled/styled-components'
+import PropTypes from 'prop-types'
 
 export function H3({ children, ...rest }) {
   return (
@@ -13,9 +13,9 @@ export function H3({ children, ...rest }) {
     >
       {children}
     </x.h3>
-  );
+  )
 }
 
 H3.propTypes = {
-  children: PropTypes.node.isRequired
-};
+  children: PropTypes.node.isRequired,
+}

@@ -1,13 +1,13 @@
-import { x } from '@xstyled/styled-components';
-import { useNavigate } from 'react-router-dom';
-import { useHover } from 'hooks/useHover';
-import { User, Center } from 'components/icons/index';
-import { P } from 'components/font-styles';
-import PropTypes from 'prop-types';
+import { x } from '@xstyled/styled-components'
+import { useNavigate } from 'react-router-dom'
+import { useHover } from 'hooks/useHover'
+import { User, Center } from 'components/icons/index'
+import { P } from 'components/font-styles'
+import PropTypes from 'prop-types'
 
 export function RegisterType({ type, ...rest }) {
-  const navigate = useNavigate();
-  const [hoverRef, isHovered] = useHover();
+  const navigate = useNavigate()
+  const [hoverRef, isHovered] = useHover()
 
   return (
     <x.div
@@ -27,13 +27,7 @@ export function RegisterType({ type, ...rest }) {
       color={isHovered ? 'blue' : 'white'}
       borderColor="blue"
       border={1}
-      onClick={() =>
-        navigate(
-          type === 'DONATOR'
-            ? '/auth/signup/donator'
-            : type === 'CENTER' && '/auth/signup/center'
-        )
-      }
+      onClick={() => navigate(type === 'DONATOR' ? '/auth/signup/donator' : type === 'CENTER' && '/auth/signup/center')}
       {...rest}
     >
       {type === 'DONATOR' && (
@@ -43,7 +37,7 @@ export function RegisterType({ type, ...rest }) {
             height="87px"
             color={isHovered ? 'blue' : 'white'}
             style={{
-              transitionDuration: 200
+              transitionDuration: 200,
             }}
           />
           <P>Donador</P>
@@ -56,16 +50,16 @@ export function RegisterType({ type, ...rest }) {
             height="87px"
             color={isHovered ? 'blue' : 'white'}
             style={{
-              transitionDuration: 200
+              transitionDuration: 200,
             }}
           />
           <P>Centro</P>
         </>
       )}
     </x.div>
-  );
+  )
 }
 
 RegisterType.propTypes = {
-  type: PropTypes.oneOf(['DONATOR', 'CENTER']).isRequired
-};
+  type: PropTypes.oneOf(['DONATOR', 'CENTER']).isRequired,
+}
