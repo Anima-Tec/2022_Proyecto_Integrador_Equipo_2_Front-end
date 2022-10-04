@@ -11,8 +11,8 @@ const NeedFoodList = ({ foods }) => {
       <x.ul
         listStyleType="disc"
         listStylePosition="inside"
-        h="10rem"
-        overflow="scroll"
+        h={foods.length >= 6 && '10rem'}
+        overflowY="auto"
       >
         {foods.map((food, index) => (
           <x.li key={index} mb={index !== foods.length - 1 && '15px'}>

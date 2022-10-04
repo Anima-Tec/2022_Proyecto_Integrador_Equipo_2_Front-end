@@ -3,6 +3,7 @@ import { H2 } from 'components/font-styles';
 import PropTypes from 'prop-types';
 import { StepCounter } from 'components/StepCounter';
 import { FoodItem } from 'components/FoodItem';
+import { foods } from './center-information-screen';
 
 export const CenterFoodScreen = ({ step }) => {
   return (
@@ -43,24 +44,6 @@ export const CenterFoodScreen = ({ step }) => {
     </>
   );
 };
-
-const foods = [
-  {
-    name: 'Fideos',
-    amount: 2,
-    unitMeasurement: 'KG'
-  },
-  {
-    name: 'Agua',
-    amount: 10,
-    unitMeasurement: 'L'
-  },
-  {
-    name: 'Harina',
-    amount: 3,
-    unitMeasurement: 'KG'
-  }
-];
 
 CenterFoodScreen.propTypes = {
   step: PropTypes.number.isRequired

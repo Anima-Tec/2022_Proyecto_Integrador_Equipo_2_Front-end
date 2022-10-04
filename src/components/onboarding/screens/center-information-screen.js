@@ -26,7 +26,7 @@ export const CenterInformationScreen = ({ step }) => {
             Ubicación
           </P>
           <x.img
-            src="/mapa.png"
+            src="/mapa-ilustration.png"
             w={{ _: '302px', lg: '352px' }}
             h={{ _: '166', lg: '216' }}
             mb="5px"
@@ -49,143 +49,18 @@ CenterInformationScreen.propTypes = {
 
 export const foods = [
   {
-    id: 'q',
-    name: 'string',
-    category: 'string',
-    amount: 213,
+    name: 'Fideos',
+    amount: 2,
     unitMeasurement: 'KG'
   },
   {
-    id: 'w',
-    name: 'string',
-    category: 'string',
-    amount: 213,
-    unitMeasurement: 'KG'
+    name: 'Agua',
+    amount: 10,
+    unitMeasurement: 'L'
   },
   {
-    id: 'e',
-    name: 'string',
-    category: 'string',
-    amount: 213,
-    unitMeasurement: 'KG'
-  },
-  {
-    id: 'r',
-    name: 'string',
-    category: 'string',
-    amount: 213,
-    unitMeasurement: 'KG'
-  },
-  {
-    id: 't',
-    name: 'string',
-    category: 'string',
-    amount: 213,
-    unitMeasurement: 'KG'
-  },
-  {
-    id: 'q',
-    name: 'string',
-    category: 'string',
-    amount: 213,
-    unitMeasurement: 'KG'
-  },
-  {
-    id: 'w',
-    name: 'string',
-    category: 'string',
-    amount: 213,
-    unitMeasurement: 'KG'
-  },
-  {
-    id: 'e',
-    name: 'string',
-    category: 'string',
-    amount: 213,
-    unitMeasurement: 'KG'
-  },
-  {
-    id: 'r',
-    name: 'string',
-    category: 'string',
-    amount: 213,
-    unitMeasurement: 'KG'
-  },
-  {
-    id: 't',
-    name: 'string',
-    category: 'string',
-    amount: 213,
-    unitMeasurement: 'KG'
-  },
-  {
-    id: 'q',
-    name: 'string',
-    category: 'string',
-    amount: 213,
-    unitMeasurement: 'KG'
-  },
-  {
-    id: 'w',
-    name: 'string',
-    category: 'string',
-    amount: 213,
-    unitMeasurement: 'KG'
-  },
-  {
-    id: 'e',
-    name: 'string',
-    category: 'string',
-    amount: 213,
-    unitMeasurement: 'KG'
-  },
-  {
-    id: 'r',
-    name: 'string',
-    category: 'string',
-    amount: 213,
-    unitMeasurement: 'KG'
-  },
-  {
-    id: 't',
-    name: 'string',
-    category: 'string',
-    amount: 213,
-    unitMeasurement: 'KG'
-  },
-  {
-    id: 'q',
-    name: 'string',
-    category: 'string',
-    amount: 213,
-    unitMeasurement: 'KG'
-  },
-  {
-    id: 'w',
-    name: 'string',
-    category: 'string',
-    amount: 213,
-    unitMeasurement: 'KG'
-  },
-  {
-    id: 'e',
-    name: 'string',
-    category: 'string',
-    amount: 213,
-    unitMeasurement: 'KG'
-  },
-  {
-    id: 'r',
-    name: 'string',
-    category: 'string',
-    amount: 213,
-    unitMeasurement: 'KG'
-  },
-  {
-    id: 't',
-    name: 'string',
-    category: 'string',
-    amount: 213,
+    name: 'Harina',
+    amount: 3,
     unitMeasurement: 'KG'
   }
 ];
