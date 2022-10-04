@@ -10,16 +10,42 @@ const Index = () => {
 
   return (
     <Layout>
-      <x.div w="100%" h="100%" display="flex" flexDirection="column" justifyContent="space-between" alignItems="center">
-        <x.div display="flex" flexDirection="column" justifyContent="center" alignItems="center" gap="40px">
+      <x.div
+        w="100%"
+        h="100%"
+        display="flex"
+        flexDirection="column"
+        justifyContent="space-between"
+        alignItems="center"
+      >
+        <x.div
+          display="flex"
+          flexDirection="column"
+          justifyContent="center"
+          alignItems="center"
+          gap="40px"
+        >
           <Logo width="303px" height="303px" />
           <P textAlign="center" w="80%">
-            Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem
+            Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem
+            Lorem
           </P>
         </x.div>
-        <x.div display="flex" flexDirection={{ _: 'column', lg: 'row' }} w="100%" gap="33px">
-          <Button text="Iniciar sesion" onClick={() => navigate('/auth/login')} />
-          <Button buttonStyle="minimal" text="Registrate" onClick={() => navigate('/auth/signup')} />
+        <x.div
+          display="flex"
+          flexDirection={{ _: 'column', lg: 'row' }}
+          w="100%"
+          gap="33px"
+        >
+          <Button
+            text="Iniciar sesion"
+            onClick={() => navigate('/auth/login')}
+          />
+          <Button
+            buttonStyle="minimal"
+            text="Registrate"
+            onClick={() => navigate('/auth/signup')}
+          />
         </x.div>
       </x.div>
     </Layout>

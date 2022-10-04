@@ -9,7 +9,8 @@ export const AboutScreen = ({ step }) => {
       <StepCounter step={step} />
       <CenterCard />
       <H2 textAlign="center" mb="197px">
-        Podras ver y contactar con centros de alimentos los cuales pueden necesitar alimentos o voluntarios.
+        Podras ver y contactar con centros de alimentos los cuales pueden
+        necesitar alimentos o voluntarios.
       </H2>
     </>
   )

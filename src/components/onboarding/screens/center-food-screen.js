@@ -32,7 +32,11 @@ export const CenterFoodScreen = ({ step }) => {
             Modificar alimentos
           </H2>
           {foods.map((food, index) => (
-            <FoodItem key={index} food={food} mb={index !== foods.length - 1 && { _: '20px', lg: '35px' }} />
+            <FoodItem
+              key={index}
+              food={food}
+              mb={index !== foods.length - 1 && { _: '20px', lg: '35px' }}
+            />
           ))}
         </x.div>
         <H2 textAlign="center">Manten actualizada tu información</H2>

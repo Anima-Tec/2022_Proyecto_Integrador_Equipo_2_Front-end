@@ -8,7 +8,12 @@ const NeedFoodList = ({ foods }) => {
       <P fontWeight="bold" mb="15px">
         Se requieren los siguientes alimentos:
       </P>
-      <x.ul listStyleType="disc" listStylePosition="inside" h={foods.length >= 6 && '10rem'} overflowY="auto">
+      <x.ul
+        listStyleType="disc"
+        listStylePosition="inside"
+        h={foods.length >= 6 && '10rem'}
+        overflowY="auto"
+      >
         {foods.map((food, index) => (
           <x.li key={index} mb={index !== foods.length - 1 && '15px'}>
             {food.amount} {food.unitMeasurement} de {food.name}

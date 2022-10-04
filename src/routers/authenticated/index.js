@@ -16,12 +16,20 @@ export function Authenticated() {
       <Routes>
         {user?.onboardingStepPosition !== -1 ? (
           <>
-            <Route exact path="/" element={<Navigate to={'/onboarding'} replace={true} />} />
+            <Route
+              exact
+              path="/"
+              element={<Navigate to={'/onboarding'} replace={true} />}
+            />
             <Route exact path="/onboarding" element={<Onboarding />} />
           </>
         ) : (
           <>
-            <Route exact path="/" element={<Navigate to={'/home'} replace={true} />} />
+            <Route
+              exact
+              path="/"
+              element={<Navigate to={'/home'} replace={true} />}
+            />
             <Route exact path="/home" element={<Home />} />
             <Route exact path="/auth/logout" element={<Logout />} />
           </>

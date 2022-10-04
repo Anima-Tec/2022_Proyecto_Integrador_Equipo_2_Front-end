@@ -25,7 +25,12 @@ export const CenterInformationScreen = ({ step }) => {
           <P fontWeight="bold" mb="20px">
             Ubicación
           </P>
-          <x.img src="/mapa-ilustration.png" w={{ _: '302px', lg: '352px' }} h={{ _: '166', lg: '216' }} mb="5px" />
+          <x.img
+            src="/mapa-ilustration.png"
+            w={{ _: '302px', lg: '352px' }}
+            h={{ _: '166', lg: '216' }}
+            mb="5px"
+          />
           <P fontSize="12px" textAlign="center" color="#555555">
             Trueba 2345 esquina Maldonado
           </P>

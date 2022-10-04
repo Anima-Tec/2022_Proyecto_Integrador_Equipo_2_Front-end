@@ -21,7 +21,13 @@ const FoodItem = ({ food, ...rest }) => {
         <x.span mx={{ _: '10px', lg: '20px' }}> - </x.span>
         {food.amount} {food.unitMeasurement}
       </P>
-      <x.div ml={{ _: '10px', lg: '87px' }} display="flex" justifyContent="center" alignItems="center" gap="6px">
+      <x.div
+        ml={{ _: '10px', lg: '87px' }}
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        gap="6px"
+      >
         <Pencil />
         <CloseCircle />
       </x.div>

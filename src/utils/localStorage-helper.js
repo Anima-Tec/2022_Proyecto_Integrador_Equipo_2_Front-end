@@ -7,7 +7,9 @@ export const updateLocalUser = data => {
 }
 
 export const getLocalAccessToken = () => {
-  const accessToken = localStorage.getItem('accessToken') && JSON.parse(localStorage.getItem('accessToken'))
+  const accessToken =
+    localStorage.getItem('accessToken') &&
+    JSON.parse(localStorage.getItem('accessToken'))
 
   return accessToken
 }

@@ -7,7 +7,14 @@ const Register = () => {
   return (
     <Layout>
       <H1 textAlign="center">Seleccione el tipo de registro</H1>
-      <x.div w="100%" h="100%" display="flex" flexDirection="column" alignItems="center" justifyContent="space-evenly">
+      <x.div
+        w="100%"
+        h="100%"
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="space-evenly"
+      >
         <RegisterType type="DONATOR" />
         <RegisterType type="CENTER" />
       </x.div>

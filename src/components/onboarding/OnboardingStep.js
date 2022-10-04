@@ -31,8 +31,9 @@ const OnboardingStep = ({ user }) => {
       return (
         <TextScreen>
           <H2 textAlign="center" w="80%">
-            ¡<x.span fontWeight="bold">Bienvenido {user.name} a ALIDAR</x.span>! Donde podras aportar tu granito de
-            arena donando comida a quienes necesitan.
+            ¡<x.span fontWeight="bold">Bienvenido {user.name} a ALIDAR</x.span>!
+            Donde podras aportar tu granito de arena donando comida a quienes
+            necesitan.
           </H2>
         </TextScreen>
       )

@@ -3,7 +3,14 @@ import { x } from '@xstyled/styled-components'
 
 export function Layout({ children, ...rest }) {
   return (
-    <x.div w="100%" minHeight="100vh" display="flex" justifyContent="center" bg="white" {...rest}>
+    <x.div
+      w="100%"
+      minHeight="100vh"
+      display="flex"
+      justifyContent="center"
+      bg="white"
+      {...rest}
+    >
       <x.div
         w={{ _: '100%', lg: '60%' }}
         minHeight="100vh"

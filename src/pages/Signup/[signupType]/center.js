@@ -2,7 +2,10 @@ import { x } from '@xstyled/styled-components'
 import { Form } from 'components/Form'
 import { TextField } from 'components/TextField'
 import { Layout } from 'core/Layout'
-import { CenterRegisterInputs, validateImage } from 'validations/center-validations'
+import {
+  CenterRegisterInputs,
+  validateImage,
+} from 'validations/center-validations'
 import { Button } from 'components/buttons/Button'
 import { H1, P } from 'components/font-styles'
 import { useSignUp } from 'hooks/auth/mutations/useSignUp'
@@ -41,14 +44,35 @@ const Register = () => {
         }
       >
         <TextField label="Nombre" name="name" placeholder="Ingresar nombre" />
-        <TextField label="Departamento" name="departament" placeholder="Ingresar departamento" />
+        <TextField
+          label="Departamento"
+          name="departament"
+          placeholder="Ingresar departamento"
+        />
         <TextField label="Zona" name="zone" placeholder="Ingresar zona" />
         <TextField label="Calle" name="street" placeholder="Ingresar calle" />
-        <TextField label="Numero de puerta" name="numberDoor" placeholder="Ingresar numero puerta" />
+        <TextField
+          label="Numero de puerta"
+          name="numberDoor"
+          placeholder="Ingresar numero puerta"
+        />
         <TextField label="Email" name="email" placeholder="Ingresar email" />
-        <TextField type="password" label="Contraseña" name="password" placeholder="Ingresar contraseña" />
-        <TextField label="Telefono" name="phone" placeholder="Ingresar telefono" />
-        <TextField label="Descripcion (opcional)" name="description" placeholder="Ingresar descripcion" />
+        <TextField
+          type="password"
+          label="Contraseña"
+          name="password"
+          placeholder="Ingresar contraseña"
+        />
+        <TextField
+          label="Telefono"
+          name="phone"
+          placeholder="Ingresar telefono"
+        />
+        <TextField
+          label="Descripcion (opcional)"
+          name="description"
+          placeholder="Ingresar descripcion"
+        />
         <x.div
           display="flex"
           flexDirection={{ _: 'column', lg: 'row' }}
@@ -83,7 +107,9 @@ const Register = () => {
           {dataImage.imageSelected && (
             <>
               <Button
-                text={dataImage.showPreviewImage ? 'Ocultar imagen' : 'Ver imagen'}
+                text={
+                  dataImage.showPreviewImage ? 'Ocultar imagen' : 'Ver imagen'
+                }
                 w="20%"
                 onClick={() =>
                   setDataImage(({ showPreviewImage, ...restData }) => {
@@ -108,7 +134,9 @@ const Register = () => {
             </>
           )}
         </x.div>
-        {dataImage.imageSelected && dataImage.showPreviewImage && <x.img src={dataImage.imageSelected} w="100%" />}
+        {dataImage.imageSelected && dataImage.showPreviewImage && (
+          <x.img src={dataImage.imageSelected} w="100%" />
+        )}
         {error && <P color="warning">{error}</P>}
         <Button text="REGISTRARSE" />
       </Form>

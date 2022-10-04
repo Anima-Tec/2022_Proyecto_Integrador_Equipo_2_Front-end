@@ -30,7 +30,11 @@ export const AuthProvider = ({ children }) => {
   const [{ user, accessToken, isAuthenticated }, setState] = useState(loadState)
 
   return (
-    <AuthContext.Provider value={{ user, isAuthenticated, accessToken, setState }}>{children}</AuthContext.Provider>
+    <AuthContext.Provider
+      value={{ user, isAuthenticated, accessToken, setState }}
+    >
+      {children}
+    </AuthContext.Provider>
   )
 }
 

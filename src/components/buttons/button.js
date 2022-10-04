@@ -15,12 +15,24 @@ export function Button({ buttonStyle = 'primary', text, ...rest }) {
       transition
       transitionDuration={300}
       bg={{
-        _: buttonStyle === 'primary' ? 'blue' : buttonStyle === 'minimal' && 'white',
-        hover: buttonStyle === 'primary' ? 'white' : buttonStyle === 'minimal' && 'blue',
+        _:
+          buttonStyle === 'primary'
+            ? 'blue'
+            : buttonStyle === 'minimal' && 'white',
+        hover:
+          buttonStyle === 'primary'
+            ? 'white'
+            : buttonStyle === 'minimal' && 'blue',
       }}
       color={{
-        _: buttonStyle === 'primary' ? 'white' : buttonStyle === 'minimal' && 'blue',
-        hover: buttonStyle === 'primary' ? 'blue' : buttonStyle === 'minimal' && 'white',
+        _:
+          buttonStyle === 'primary'
+            ? 'white'
+            : buttonStyle === 'minimal' && 'blue',
+        hover:
+          buttonStyle === 'primary'
+            ? 'blue'
+            : buttonStyle === 'minimal' && 'white',
       }}
       borderColor="blue"
       style={{ outline: 'none' }}

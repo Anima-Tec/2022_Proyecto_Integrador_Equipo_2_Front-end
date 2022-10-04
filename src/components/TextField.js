@@ -22,7 +22,9 @@ export function TextField({ label, name, ...rest }) {
         {...register(name)}
         {...rest}
       />
-      {errors[name] && <x.small color="warning">{errors[name].message}</x.small>}
+      {errors[name] && (
+        <x.small color="warning">{errors[name].message}</x.small>
+      )}
     </x.div>
   )
 }

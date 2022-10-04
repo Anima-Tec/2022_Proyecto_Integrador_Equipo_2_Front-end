@@ -27,7 +27,13 @@ export function RegisterType({ type, ...rest }) {
       color={isHovered ? 'blue' : 'white'}
       borderColor="blue"
       border={1}
-      onClick={() => navigate(type === 'DONATOR' ? '/auth/signup/donator' : type === 'CENTER' && '/auth/signup/center')}
+      onClick={() =>
+        navigate(
+          type === 'DONATOR'
+            ? '/auth/signup/donator'
+            : type === 'CENTER' && '/auth/signup/center',
+        )
+      }
       {...rest}
     >
       {type === 'DONATOR' && (

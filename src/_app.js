@@ -9,7 +9,9 @@ export default function App() {
 
   return (
     <BrowserRouter>
-      <Suspense fallback={<FullScreenLoader />}>{isAuthenticated ? <Authenticated /> : <Unauthenticated />}</Suspense>
+      <Suspense fallback={<FullScreenLoader />}>
+        {isAuthenticated ? <Authenticated /> : <Unauthenticated />}
+      </Suspense>
     </BrowserRouter>
   )
 }

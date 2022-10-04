@@ -32,7 +32,9 @@ export function FileField({ label, name, onChange, ...rest }) {
       >
         {label}
       </x.label>
-      {errors[name] && <x.small color="warning">{errors[name].message}</x.small>}
+      {errors[name] && (
+        <x.small color="warning">{errors[name].message}</x.small>
+      )}
     </>
   )
 }

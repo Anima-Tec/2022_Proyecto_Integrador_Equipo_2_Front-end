@@ -9,7 +9,10 @@ export class UserService {
     })
   }
 
-  static async updateUser({ where: { id, rol }, data: { accessToken, ...userData } }) {
+  static async updateUser({
+    where: { id, rol },
+    data: { accessToken, ...userData },
+  }) {
     return await router.patch(`/${rol}s/${id}`, userData, {
       headers: {
         Authorization: `Bearer ${accessToken}`,

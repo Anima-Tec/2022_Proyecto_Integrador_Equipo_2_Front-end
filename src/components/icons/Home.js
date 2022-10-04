@@ -5,7 +5,14 @@ const { colors } = theme
 
 export function Home({ color = 'icon-black', ...rest }) {
   return (
-    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" {...rest}>
+    <svg
+      width="30"
+      height="30"
+      viewBox="0 0 30 30"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...rest}
+    >
       <path
         d="M15 22.5V18.75"
         stroke={colors[color] ?? color}
