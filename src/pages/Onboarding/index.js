@@ -1,18 +1,18 @@
-import { x } from '@xstyled/styled-components';
-import { useUpdateUser } from 'hooks/user/mutations/updateUser';
-import { useCurrentUser } from 'hooks/user/queries/useCurrentUser';
-import { Button } from 'components/buttons/Button';
-import { OnboardingLayout } from 'core/OnboardingLayout';
-import { OnboardingStep } from 'components/onboarding/OnboardingStep';
-import { useNavigate } from 'react-router-dom';
+import { x } from '@xstyled/styled-components'
+import { useUpdateUser } from 'hooks/user/mutations/updateUser'
+import { useCurrentUser } from 'hooks/user/queries/useCurrentUser'
+import { Button } from 'components/buttons/Button'
+import { OnboardingLayout } from 'core/OnboardingLayout'
+import { OnboardingStep } from 'components/onboarding/OnboardingStep'
+import { useNavigate } from 'react-router-dom'
 
 const Onboarding = () => {
-  const navigate = useNavigate();
-  const { data: user, refetch: refetchUser } = useCurrentUser();
-  const [mutateAsync, error] = useUpdateUser();
+  const navigate = useNavigate()
+  const { data: user, refetch: refetchUser } = useCurrentUser()
+  const [mutateAsync, error] = useUpdateUser()
 
   if (error) {
-    console.log(error);
+    console.log(error)
   }
 
   return (
@@ -40,9 +40,9 @@ const Onboarding = () => {
             onClick={async () => {
               if (user?.onboardingStepPosition >= 0) {
                 await mutateAsync({
-                  onboardingStepPosition: user?.onboardingStepPosition - 1
-                });
-                refetchUser();
+                  onboardingStepPosition: user?.onboardingStepPosition - 1,
+                })
+                refetchUser()
               }
             }}
           />
@@ -55,19 +55,19 @@ const Onboarding = () => {
                 onboardingStepPosition:
                   user?.onboardingStepPosition === 3
                     ? -1
-                    : user?.onboardingStepPosition + 1
-              });
+                    : user?.onboardingStepPosition + 1,
+              })
 
-              refetchUser();
+              refetchUser()
             }
             if (user?.onboardingStepPosition === 3) {
-              navigate('/home');
+              navigate('/home')
             }
           }}
         />
       </x.div>
     </OnboardingLayout>
-  );
-};
+  )
+}
 
-export default Onboarding;
+export default Onboarding
