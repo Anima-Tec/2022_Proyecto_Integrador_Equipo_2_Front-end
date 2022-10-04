@@ -18,5 +18,5 @@ export function Link({ children, ...rest }) {
 }
 
 Link.propTypes = {
-  children: PropTypes.string.isRequired
+  children: PropTypes.node.isRequired
 };
