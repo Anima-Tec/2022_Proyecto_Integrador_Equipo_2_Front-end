@@ -25,15 +25,21 @@ const Login = () => {
         Iniciar sesión
       </H1>
       <Form schema={DonatorLoginInputs} onSubmit={data => handdleSubmit(data)}>
-        <TextField label="Email" name="email" placeholder="Ingresa un email" />
-        <TextField
-          label="Contraseña"
-          name="password"
-          placeholder="Ingresa una contraseña"
-          type="password"
-        />
-        {error && <P color="warning">{error}</P>}
-        <Button text="INICIAR SESIÓN" />
+        <x.div display="flex" flexDirection="column" gap="40px">
+          <TextField
+            label="Email"
+            name="email"
+            placeholder="Ingresa un email"
+          />
+          <TextField
+            label="Contraseña"
+            name="password"
+            placeholder="Ingresa una contraseña"
+            type="password"
+          />
+          {error && <P color="warning">{error}</P>}
+          <Button text="INICIAR SESIÓN" />
+        </x.div>
       </Form>
       <x.div
         mt="52px"

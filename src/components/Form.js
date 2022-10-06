@@ -12,9 +12,7 @@ export function Form({ children, schema, defaultValues, onSubmit, onCancel }) {
   return (
     <FormProvider {...methods}>
       <x.form w="100%" onSubmit={handleSubmit(onSubmit)}>
-        <x.div display="flex" flexDirection="column" gap="40px">
-          {children}
-        </x.div>
+        {children}
       </x.form>
     </FormProvider>
   )

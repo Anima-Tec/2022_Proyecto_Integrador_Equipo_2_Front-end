@@ -1,6 +1,6 @@
 import { x } from '@xstyled/styled-components'
-import { useUpdateUser } from 'hooks/user/mutations/updateUser'
-import { useCurrentUser } from 'hooks/user/queries/useCurrentUser'
+import { useUpdateUser } from 'hooks/users/mutations/updateUser'
+import { useCurrentUser } from 'hooks/users/queries/getCurrentUser'
 import { Button } from 'components/buttons/Button'
 import { OnboardingLayout } from 'core/OnboardingLayout'
 import { OnboardingStep } from 'components/onboarding/OnboardingStep'
@@ -61,7 +61,7 @@ const Onboarding = () => {
               refetchUser()
             }
             if (user?.onboardingStepPosition === 3) {
-              navigate('/home')
+              navigate('/dashboard')
             }
           }}
         />

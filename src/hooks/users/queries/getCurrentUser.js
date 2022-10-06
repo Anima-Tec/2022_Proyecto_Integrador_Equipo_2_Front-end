@@ -8,7 +8,7 @@ export const useCurrentUser = () => {
     accessToken,
   } = useAuth()
 
-  const { isLoading, error, data, refetch } = useQuery(['currentUser'], () =>
+  const { isLoading, error, data, refetch } = useQuery(['getCurrentUser'], () =>
     UserService.getCurrentUser({
       where: {
         id,
