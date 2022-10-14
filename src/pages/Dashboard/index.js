@@ -46,14 +46,6 @@ const Dashboard = () => {
 
   const centersFiltered = filterCenters(centerQuery)
 
-  // const departamentsFiltered = centers
-  //   ?.filter(
-  //     ({ departament }, index) =>
-  //       centers?.map(({ departament }) => departament).indexOf(departament) ===
-  //       index,
-  //   )
-  //   .map(({ departament }) => departament)
-
   const departaments = [
     'Artigas',
     'Canelones',
@@ -80,7 +72,7 @@ const Dashboard = () => {
 
   return (
     !isLoading && (
-      <Layout>
+      <Layout showNavBar>
         <H1 textAlign="center">Centros</H1>
         <Form>
           <x.div
@@ -91,7 +83,10 @@ const Dashboard = () => {
             mt="32px"
             mb="48px"
           >
-            <SearchBar getDepartamentSearched={setCenterQuery} />
+            <SearchBar
+              name="centerName"
+              getDepartamentSearched={setCenterQuery}
+            />
             <x.div
               w="100%"
               display="flex"
