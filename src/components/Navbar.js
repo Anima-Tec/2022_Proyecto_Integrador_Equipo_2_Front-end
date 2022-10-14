@@ -1,61 +1,73 @@
 import { x } from '@xstyled/styled-components'
 import { P } from 'components/font-styles'
 import { Logo } from 'components/Logo'
-import { Center, Home, List, Settings } from './icons'
+import { useLocation } from 'react-router-dom'
+import { NavBarButton } from './NavBarButton'
+import { useCurrentUser } from 'hooks/user/queries/useCurrentUser'
 
 export function Navbar() {
+  const location = useLocation()
+  const { data: user } = useCurrentUser()
+
+  const currentPage = page => location.pathname.includes(page)
+
   return (
     <x.div
-      w={{ _: '100%', lg: 'auto' }}
-      p={{_:'10px', lg: '13px' }}
+      w={{ _: '100%', lg: 'unset' }}
+      position="fixed"
+      top={{ _: 'unset', lg: 0 }}
+      left={{ _: 0, lg: 'unset' }}
+      right={0}
+      bottom={0}
+      h={{ _: 'fit-content', lg: '100vh' }}
+      p={{ _: '10px', lg: '15px' }}
+      bg="white"
       boxShadow="0px 4px 20px rgba(0, 0, 0, 0.1)"
-      position={{ _: 'fixed', lg: 'inherit' }}
-      bottom={{ _: '0px', lg: '0' }}
       display="flex"
-      justifyContent={{ _: 'center', lg: 'inherit' }}
-      alignItems={{ _: 'center', lg: 'inherit' }}
-      bg='white'
+      alignItems="center"
+      justifyContent="center"
     >
       <Logo
-        width="65.31px"
-        height="65.31px"
+        position="absolute"
+        top={0}
+        m="auto"
+        mt={{ _: '10px', lg: '13px' }}
+        w="65.31px"
+        h="65.31px"
         visibility={{ _: 'hidden', lg: 'visible' }}
       />
       <x.div
-        w={{ _: '90%', lg: 'auto' }}
-        h={{ _: 'auto', lg: '50%' }}
-        position="absolute"
-        display="flex"
-        flexDirection={{ _: 'row', lg: 'column' }}
-        justifyContent={{ _: 'space-around', lg: 'space-between' }}
-        top={{ lg: '10rem' }}
+        w="100%"
+        textAlign="center"
+        display={{ _: 'flex', lg: 'grid' }}
+        alignItems="center"
+        justifyContent={{ _: 'space-evenly', lg: 'unset' }}
+        gap={{ lg: '34px' }}
       >
-        <x.div alignItems="center" display="flex" flexDirection="column">
-          <Home />
-          <P fontSize={{ _: '12px', lg: '14px' }}>Inicio</P>
-        </x.div>
-
-        <x.div alignItems="center" display="flex" flexDirection="column">
-          <Center />
-          <P fontSize={{ _: '12px', lg: '14px' }}>Centros</P>
-        </x.div>
-
-        <x.div
-          textAlign="center"
-          alignItems="center"
-          display="flex"
-          flexDirection="column"
-        >
-          <List />
-          <P fontSize={{ _: '12px', lg: '14px' }}>
-            Lista <br /> Alimentos
-          </P>
-        </x.div>
-
-        <x.div alignItems="center" display="flex" flexDirection="column">
-          <Settings />
-          <P fontSize={{ _: '12px', lg: '14px' }}>Ajustes</P>
-        </x.div>
+        <NavBarButton page="home" text="Inicio" active={currentPage('/home')} />
+        <NavBarButton
+          page="dashboard"
+          text="Centros"
+          active={currentPage('/dashboard')}
+        />
+        {user?.rol === 'CENTER' && (
+          <NavBarButton page="foods" active={currentPage('/foods')}>
+            <P
+              fontSize={{ _: '12px', lg: '14px' }}
+              display={{ lg: 'flex' }}
+              justifyContent={{ lg: 'center' }}
+              alignItems={{ lg: 'center' }}
+              flexDirection={{ lg: 'column' }}
+            >
+              Lista de <x.span>alimentos</x.span>
+            </P>
+          </NavBarButton>
+        )}
+        <NavBarButton
+          page="settings"
+          text="Ajustes"
+          active={currentPage('/settings')}
+        />
       </x.div>
     </x.div>
   )
