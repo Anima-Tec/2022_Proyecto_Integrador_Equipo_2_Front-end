@@ -1,3 +1,4 @@
+import { x } from '@xstyled/styled-components'
 import { theme } from 'config/theme'
 import PropTypes from 'prop-types'
 
@@ -5,7 +6,7 @@ const { colors } = theme
 
 export function Home({ color = 'icon-black', ...rest }) {
   return (
-    <svg
+    <x.svg
       width="30"
       height="30"
       viewBox="0 0 30 30"
@@ -27,7 +28,7 @@ export function Home({ color = 'icon-black', ...rest }) {
         strokeLinecap="round"
         strokeLinejoin="round"
       />
-    </svg>
+    </x.svg>
   )
 }
 
