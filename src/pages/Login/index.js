@@ -7,13 +7,14 @@ import { Link } from 'react-router-dom'
 import { Button } from 'components/buttons/Button'
 import { H1, P } from 'components/font-styles'
 import { useLogin } from 'hooks/auth/mutations/useLogin'
+import { GoogleLogin } from '@react-oauth/google'
 
 const Login = () => {
   const [mutateAsync, error] = useLogin()
 
-  const handdleSubmit = async formData => {
+  const handdleSubmit = async data => {
     try {
-      await mutateAsync(formData)
+      await mutateAsync(data)
     } catch (err) {
       console.log(err)
     }
@@ -73,6 +74,14 @@ const Login = () => {
             Crear cuenta
           </x.span>
         </Link>
+        <GoogleLogin
+          onSuccess={credentialResponse => {
+            handdleSubmit({ ...credentialResponse, isGoogleLogin: true })
+          }}
+          onError={() => {
+            console.log('Login Failed')
+          }}
+        />
       </x.div>
     </Layout>
   )

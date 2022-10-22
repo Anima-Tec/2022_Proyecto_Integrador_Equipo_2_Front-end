@@ -1,12 +1,6 @@
 import * as yup from 'yup'
 
-export const CenterLoginInputs = yup.object({
-  email: yup
-    .string()
-    .email('Email invalido')
-    .required('Debe ingresar un email'),
-  password: yup.string().min(6, 'Debe tener al menos 6 caracteres'),
-})
+
 
 const MAX_FILE_SIZE = 5000000 //  1MB = 1 million of bytes => 5MB = 5 million of bytes
 const FILES_ALLOWED = ['image/png', 'image/jpeg', 'image/jpg']
