@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useMutation } from 'react-query'
 import { useAuth } from 'contexts/auth'
 import { UserService } from 'networking/services/UserService'
-import { useCurrentUser } from 'hooks/user/queries/useCurrentUser'
+import { useCurrentUser } from 'hooks/users/queries/getCurrentUser'
 import SessionService from 'utils/localStorage-helper'
 
 export const useUpdateUser = () => {

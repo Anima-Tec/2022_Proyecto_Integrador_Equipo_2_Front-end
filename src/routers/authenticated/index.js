@@ -2,9 +2,9 @@
 import { lazy } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { useLogout } from 'hooks/auth/mutations/useLogout'
-import { useCurrentUser } from 'hooks/user/queries/useCurrentUser'
+import { useCurrentUser } from 'hooks/users/queries/getCurrentUser'
 
-const Home = lazy(() => import('pages/Home'))
+const Dashboard = lazy(() => import('pages/Dashboard'))
 const Onboarding = lazy(() => import('pages/Onboarding'))
 const Page404 = lazy(() => import('pages/Error404'))
 
@@ -28,9 +28,9 @@ export function Authenticated() {
             <Route
               exact
               path="/"
-              element={<Navigate to={'/home'} replace={true} />}
+              element={<Navigate to={'/dashboard'} replace={true} />}
             />
-            <Route exact path="/home" element={<Home />} />
+            <Route exact path="/dashboard" element={<Dashboard />} />
             <Route exact path="/auth/logout" element={<Logout />} />
           </>
         )}

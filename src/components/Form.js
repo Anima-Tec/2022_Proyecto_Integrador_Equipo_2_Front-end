@@ -12,9 +12,7 @@ export function Form({ children, schema, defaultValues, onSubmit, onCancel }) {
   return (
     <FormProvider {...methods}>
       <x.form w="100%" onSubmit={handleSubmit(onSubmit)}>
-        <x.div display="flex" flexDirection="column" gap="40px">
-          {children}
-        </x.div>
+        {children}
       </x.form>
     </FormProvider>
   )
@@ -22,8 +20,8 @@ export function Form({ children, schema, defaultValues, onSubmit, onCancel }) {
 
 Form.propTypes = {
   children: PropTypes.node.isRequired,
-  schema: PropTypes.any.isRequired,
+  schema: PropTypes.any,
   defaultValues: PropTypes.object,
-  onSubmit: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func,
   onCancel: PropTypes.func,
 }

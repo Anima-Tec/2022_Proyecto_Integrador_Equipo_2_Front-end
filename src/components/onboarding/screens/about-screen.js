@@ -7,7 +7,11 @@ export const AboutScreen = ({ step }) => {
   return (
     <>
       <StepCounter step={step} />
-      <CenterCard />
+      <CenterCard
+        img="/center-ilustration.jpeg"
+        name="Estadio charrua"
+        isOnboarding={true}
+      />
       <H2 textAlign="center" mb="197px">
         Podras ver y contactar con centros de alimentos los cuales pueden
         necesitar alimentos o voluntarios.
