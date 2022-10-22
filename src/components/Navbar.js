@@ -1,9 +1,9 @@
 import { x } from '@xstyled/styled-components'
 import { P } from 'components/font-styles'
-import { Logo } from 'components/Logo'
 import { useLocation } from 'react-router-dom'
 import { NavBarButton } from './NavBarButton'
-import { useCurrentUser } from 'hooks/user/queries/useCurrentUser'
+import { useCurrentUser } from 'hooks/users/queries/getCurrentUser'
+import { Hand } from './icons/Hand'
 
 export function Navbar() {
   const location = useLocation()
@@ -27,7 +27,7 @@ export function Navbar() {
       alignItems="center"
       justifyContent="center"
     >
-      <Logo
+      <Hand
         position="absolute"
         top={0}
         m="auto"
