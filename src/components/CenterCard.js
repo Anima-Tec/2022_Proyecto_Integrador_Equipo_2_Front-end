@@ -46,16 +46,24 @@ export function CenterCard({
         justifyContent="space-between"
         fontSize={{ _: '12px', lg: '16px' }}
       >
-        <P fontSize={{ _: '12px', lg: '16px' }} fontWeight="bold">
+        <P
+          fontSize={{ _: '12px', lg: '16px' }}
+          fontWeight="bold"
+          lineHeight={0}
+        >
           {name}
         </P>
         {(foods?.length || isOnboarding) && (
-          <P fontSize={{ _: '12px', lg: '16px' }}>Se requieren alimentos</P>
+          <P fontSize={{ _: '12px', lg: '16px' }} lineHeight={0}>
+            Se requieren alimentos
+          </P>
         )}
         {(numberVolunteersRequired || isOnboarding) && (
-          <P fontSize={{ _: '12px', lg: '16px' }}>Se requieren voluntarios</P>
+          <P fontSize={{ _: '12px', lg: '16px' }} lineHeight={0}>
+            Se requieren voluntarios
+          </P>
         )}
-        <P fontSize={{ _: '12px', lg: '16px' }} textAlign="end">
+        <P fontSize={{ _: '12px', lg: '16px' }} textAlign="end" lineHeight={0}>
           Toca para más detalles
         </P>
       </x.div>

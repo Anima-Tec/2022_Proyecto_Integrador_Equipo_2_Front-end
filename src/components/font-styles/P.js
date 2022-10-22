@@ -8,7 +8,8 @@ export function P({ children, ...rest }) {
       fontWeight="400"
       fontStyle="normal"
       fontSize="16px"
-      // lineHeight="30px"
+      lineHeight="30px"
+      style={{ wordBreak: 'break-all' }}
       {...rest}
     >
       {children}
