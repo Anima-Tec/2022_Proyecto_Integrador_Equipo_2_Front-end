@@ -3,51 +3,83 @@ import { ArrowDown } from 'components/icons/ArrowDown'
 import { Select } from 'components/Select'
 import PropTypes from 'prop-types'
 
-const SelectZones = ({ zones, zoneSelected, getZoneSelected }) => {
+const SelectZones = ({
+  departmentSelected,
+  initialValue = departmentSelected.name
+    ? 'Seleccione una zona'
+    : 'Debe seleccionar un departamento',
+  zoneSelected,
+  getZoneSelected,
+  label,
+  mrArrow,
+  ...rest
+}) => {
+  const handleOnChange = e => {
+    const zoneIdSelected = e.target.value
+    const dataZoneSelected = departmentSelected.zones.find(
+      zone => zone.id === zoneIdSelected,
+    )
+
+    getZoneSelected(prevState => ({
+      ...prevState,
+      zoneSelected: dataZoneSelected,
+    }))
+  }
+
   return (
     <x.div w="100%" position="relative">
       <Select
+        label={label}
+        name="zoneId"
+        value={zoneSelected ?? initialValue}
+        onChange={handleOnChange}
         w="100%"
-        value={zoneSelected ?? 'default'}
-        name="zones"
-        py="11px"
-        px="41px"
-        pr="60px"
-        borderRadius={20}
-        boxShadow="0px 4px 20px rgba(0, 0, 0, 0.1)"
         outline="none"
-        onChange={e =>
-          getZoneSelected({
-            zone: e.target.value,
-            text: `Centros filtrados por la zona: ${e.target.value}`,
-          })
-        }
+        {...rest}
       >
-        <x.option value="default" disabled>
-          Zona
+        <x.option value={initialValue} disabled>
+          {initialValue}
         </x.option>
-        {zones?.map((zone, index) => (
-          <x.option key={index} value={zone}>
-            {zone}
+        {departmentSelected?.zones?.map(zone => (
+          <x.option key={zone.id} value={zone.id}>
+            {zone.name}
           </x.option>
         ))}
       </Select>
       <ArrowDown
         position="absolute"
-        top={0}
+        top={!label && 0}
         right={0}
         bottom={0}
         m="auto"
-        mr="19px"
+        mr={mrArrow}
       />
     </x.div>
   )
 }
 
+const departmentSelected = {
+  name: PropTypes.string,
+  zones: PropTypes.array,
+}
+
 SelectZones.propTypes = {
-  zones: PropTypes.array.isRequired,
+  initialValue: PropTypes.string,
+  departments: PropTypes.array.isRequired,
+  departmentSelected: PropTypes.shape(departmentSelected).isRequired,
   zoneSelected: PropTypes.string,
   getZoneSelected: PropTypes.func.isRequired,
+  label: PropTypes.string,
+  mrArrow: PropTypes.string,
+}
+
+SelectZones.defaultProps = {
+  departments: [],
+  departmentSelected: {
+    name: '',
+    zones: '',
+  },
+  getZoneSelected: () => {},
 }
 
 export { SelectZones }

@@ -1,8 +1,23 @@
 import { x } from '@xstyled/styled-components'
 import { Search as SearchIcon } from 'components/icons/Search'
 import PropTypes from 'prop-types'
+import { useFormContext } from 'react-hook-form'
 
-const SearchBar = ({ getDepartamentSearched }) => {
+const SearchBar = ({ name, getCenterSearched }) => {
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext()
+
+  const handleOnChange = e => {
+    const centerName = e.target.value
+
+    getCenterSearched(prevState => ({
+      ...prevState,
+      centerName,
+    }))
+  }
+
   return (
     <x.div w="100%" position="relative">
       <x.input
@@ -14,14 +29,8 @@ const SearchBar = ({ getDepartamentSearched }) => {
         outline="none"
         placeholder="Buscar centro por nombre"
         boxShadow="0px 4px 20px rgba(0, 0, 0, 0.1)"
-        onChange={e =>
-          getDepartamentSearched({
-            name: e.target.value,
-            text:
-              e.target.value &&
-              `Centros filtrados por el nombre: ${e.target.value}`,
-          })
-        }
+        {...register(name)}
+        onChange={handleOnChange}
       />
       <SearchIcon
         position="absolute"
@@ -32,12 +41,16 @@ const SearchBar = ({ getDepartamentSearched }) => {
         mr="25px"
         cursor="pointer"
       />
+      {errors[name] && (
+        <x.small color="warning">{errors[name].message}</x.small>
+      )}
     </x.div>
   )
 }
 
 SearchBar.propTypes = {
-  getDepartamentSearched: PropTypes.func.isRequired,
+  name: PropTypes.string,
+  getCenterSearched: PropTypes.func.isRequired,
 }
 
 export { SearchBar }

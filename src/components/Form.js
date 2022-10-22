@@ -20,8 +20,8 @@ export function Form({ children, schema, defaultValues, onSubmit, onCancel }) {
 
 Form.propTypes = {
   children: PropTypes.node.isRequired,
-  schema: PropTypes.any.isRequired,
+  schema: PropTypes.any,
   defaultValues: PropTypes.object,
-  onSubmit: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func,
   onCancel: PropTypes.func,
 }

@@ -4,40 +4,82 @@ import { H1, P } from 'components/font-styles'
 import { Layout } from 'core/Layout'
 import { useCenters } from 'hooks/centers/queries/getCenters'
 import { useNavigate } from 'react-router-dom'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Form } from 'components/Form'
-import { SelectDepartaments } from 'components/SelectDepartaments'
+import { SelectDepartments } from 'components/SelectDepartments'
 import { SelectZones } from 'components/SelectZones'
 import { SearchBar } from 'components/SearchBar'
+import { useDepartments } from 'hooks/departments/queries/getDepartments'
 
 const Dashboard = () => {
   const navigate = useNavigate()
-  const { isLoading, data: centers } = useCenters()
-  const [centerQuery, setCenterQuery] = useState({
-    name: undefined,
-    zone: undefined,
-    departament: undefined,
-    text: undefined,
+  const { data: departments } = useDepartments()
+  const { data: centers } = useCenters()
+
+  const [departmentSelected, setDepartmentSelected] = useState({
+    name: null,
+    zoneSelected: {
+      id: null,
+      departmentId: null,
+      name: null,
+    },
+    zones: [],
   })
 
-  const filterCenters = centerQuery => {
-    if (centerQuery.name) {
-      return centers.filter(center =>
-        center.name.toLowerCase().startsWith(centerQuery.name.toLowerCase()),
-      )
-    }
+  const [centerQuery, setCenterQuery] = useState({
+    centerName: undefined,
+    departmentSelected,
+  })
 
-    if (centerQuery.departament) {
+  // TODO: Refactor this with querys on the Backend
+  const filterCenters = centerQuery => {
+    const { centerName, departmentSelected } = centerQuery
+
+    if (
+      centerName &&
+      departmentSelected.name &&
+      departmentSelected.zoneSelected.name
+    ) {
       return centers?.filter(
         center =>
-          center.departament.toLowerCase() ===
-          centerQuery.departament.toLowerCase(),
+          center.name.toLowerCase().startsWith(centerName.toLowerCase()) &&
+          center.department.name.toLowerCase() ===
+            departmentSelected.name.toLowerCase() &&
+          center.zone.name.toLowerCase() ===
+            departmentSelected.zoneSelected.name.toLowerCase(),
       )
     }
 
-    if (centerQuery.zone) {
+    if (centerName && departmentSelected.name) {
       return centers?.filter(
-        center => center.zone.toLowerCase() === centerQuery.zone.toLowerCase(),
+        center =>
+          center.name.toLowerCase().startsWith(centerName.toLowerCase()) &&
+          center.department.name.toLowerCase() ===
+            departmentSelected.name.toLowerCase(),
+      )
+    }
+
+    if (departmentSelected.name && departmentSelected.zoneSelected.name) {
+      return centers?.filter(
+        center =>
+          center.department.name.toLowerCase() ===
+            departmentSelected.name.toLowerCase() &&
+          center.zone.name.toLowerCase() ===
+            departmentSelected.zoneSelected.name.toLowerCase(),
+      )
+    }
+
+    if (centerName) {
+      return centers.filter(center =>
+        center.name.toLowerCase().startsWith(centerName.toLowerCase()),
+      )
+    }
+
+    if (departmentSelected.name) {
+      return centers?.filter(
+        center =>
+          center.department.name.toLowerCase() ===
+          departmentSelected.name.toLowerCase(),
       )
     }
 
@@ -46,32 +88,32 @@ const Dashboard = () => {
 
   const centersFiltered = filterCenters(centerQuery)
 
-  const departaments = [
-    'Artigas',
-    'Canelones',
-    'Cerro',
-    'Colonia',
-    'Durazno',
-    'Flores',
-    'Florida',
-    'Lavalleja',
-    'Maldonado',
-    'Montevideo',
-    'Paysandú',
-    'Río Negro',
-    'Rivera',
-    'Rocha',
-    'Salto',
-    'San José',
-    'Soriano',
-    'Tacuarembó',
-    'Treinta y Tres',
-  ]
+  // TODO: Refactor
+  const textQueryResult =
+    centerQuery.centerName &&
+    centerQuery.departmentSelected.name &&
+    centerQuery.departmentSelected.zoneSelected.name
+      ? `Centros filtrados por el nombre ${centerQuery.centerName} en el departamento ${centerQuery.departmentSelected.name} y en la zona ${centerQuery.departmentSelected.zoneSelected.name}`
+      : centerQuery.centerName && centerQuery.departmentSelected.name
+      ? `Centros filtrados por el nombre ${centerQuery.centerName} en el departamento ${centerQuery.departmentSelected.name}`
+      : centerQuery.departmentSelected.name &&
+        centerQuery.departmentSelected.zoneSelected.name
+      ? `Centros filtrados por el departamento ${centerQuery.departmentSelected.name} y en la zona ${centerQuery.departmentSelected.zoneSelected.name}`
+      : centerQuery.centerName
+      ? `Centros filtrados por el nombre ${centerQuery.centerName}`
+      : centerQuery.departmentSelected.name &&
+        `Centros filtrados por el departamento ${centerQuery.departmentSelected.name}`
 
-  const zones = ['Borro', 'Centro']
+  useEffect(() => {
+    setCenterQuery(prevState => ({
+      ...prevState,
+      departmentSelected,
+    }))
+  }, [departmentSelected])
 
   return (
-    !isLoading && (
+    departments &&
+    centers && (
       <Layout showNavBar>
         <H1 textAlign="center">Centros</H1>
         <Form>
@@ -83,10 +125,7 @@ const Dashboard = () => {
             mt="32px"
             mb="48px"
           >
-            <SearchBar
-              name="centerName"
-              getDepartamentSearched={setCenterQuery}
-            />
+            <SearchBar name="centerName" getCenterSearched={setCenterQuery} />
             <x.div
               w="100%"
               display="flex"
@@ -95,20 +134,33 @@ const Dashboard = () => {
               alignItems="start"
               gap="30px"
             >
-              <SelectDepartaments
-                departaments={departaments}
-                departamentSelected={centerQuery.departament}
-                getDepartamentSelected={setCenterQuery}
+              <SelectDepartments
+                departments={departments}
+                departmentSelected={centerQuery.departmentSelected.name}
+                getDepartmentSelected={setDepartmentSelected}
+                py="11px"
+                px="41px"
+                pr="60px"
+                mrArrow="19px"
+                borderRadius={20}
+                boxShadow="0px 4px 20px rgba(0, 0, 0, 0.1)"
               />
               <SelectZones
-                zones={zones}
-                zoneSelected={centerQuery.zone}
-                getZoneSelected={setCenterQuery}
+                departmentSelected={centerQuery.departmentSelected}
+                zoneSelected={centerQuery.departmentSelected.zoneSelected.id}
+                getZoneSelected={setDepartmentSelected}
+                py="11px"
+                px="41px"
+                pr="60px"
+                mrArrow="19px"
+                borderRadius={20}
+                boxShadow="0px 4px 20px rgba(0, 0, 0, 0.1)"
               />
             </x.div>
           </x.div>
         </Form>
-        {centerQuery.text && <P mb="20px">{centerQuery.text}</P>}
+
+        {textQueryResult && <P mb="20px">{textQueryResult}</P>}
         <x.div w="100%" display="grid" gap="60px">
           {centersFiltered?.map(center => (
             <CenterCard
