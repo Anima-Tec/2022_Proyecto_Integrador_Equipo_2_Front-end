@@ -49,11 +49,6 @@ const Register = () => {
             placeholder="Ingresa una contraseña"
             type="password"
           />
-          <TextField
-            label="Telefono"
-            name="phone"
-            placeholder="Ingresa un telefono"
-          />
           {error && <P color="warning">{error}</P>}
           <Button text="REGISTRARSE" />
         </x.div>
