@@ -7,6 +7,7 @@ import { FullScreenLoader } from 'components/Loader'
 const Dashboard = lazy(() => import('pages/Dashboard'))
 const Onboarding = lazy(() => import('pages/Onboarding'))
 const Page404 = lazy(() => import('pages/Error404'))
+const CenterInformation = lazy(() => import('pages/Center/[centerId]'))
 
 export function Authenticated() {
   const { isLoading, data: user } = useCurrentUser()
@@ -33,6 +34,11 @@ export function Authenticated() {
               />
               <Route exact path="/dashboard" element={<Dashboard />} />
               <Route exact path="/auth/logout" element={<Logout />} />
+              <Route
+                exact
+                path="/centers/:centerId"
+                element={<CenterInformation />}
+              />
             </>
           )}
           <Route exact path="*" element={<Page404 />} />
