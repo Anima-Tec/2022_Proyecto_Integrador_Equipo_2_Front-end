@@ -3,7 +3,6 @@ import { P } from 'components/font-styles'
 import PropTypes from 'prop-types'
 
 const NeedList = ({ foods, numberVolunteersRequired }) => {
-  console.log(foods)
   return (
     <x.div w="100%" display="grid" gap="25px">
       {numberVolunteersRequired !== 0 && (
