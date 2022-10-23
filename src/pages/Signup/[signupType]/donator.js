@@ -5,6 +5,7 @@ import { Layout } from 'core/Layout'
 import { Button } from 'components/buttons/Button'
 import { H1, P } from 'components/font-styles'
 import { useSignUp } from 'hooks/auth/mutations/useSignUp'
+import { x } from '@xstyled/styled-components'
 
 const Register = () => {
   const [mutateAsync, error] = useSignUp()
@@ -26,26 +27,36 @@ const Register = () => {
         schema={DonatorRegisterInputs}
         onSubmit={data => handdleSubmit({ rol: 'DONATOR', ...data })}
       >
-        <TextField label="Nombre" name="name" placeholder="Ingresa un nombre" />
-        <TextField
-          label="Apellido"
-          name="lastName"
-          placeholder="Ingresa un apellido"
-        />
-        <TextField label="Email" name="email" placeholder="Ingresa un email" />
-        <TextField
-          label="Contraseña"
-          name="password"
-          placeholder="Ingresa una contraseña"
-          type="password"
-        />
-        <TextField
-          label="Telefono"
-          name="phone"
-          placeholder="Ingresa un telefono"
-        />
-        {error && <P color="warning">{error}</P>}
-        <Button text="REGISTRARSE" />
+        <x.div display="flex" flexDirection="column" gap="40px">
+          <TextField
+            label="Nombre"
+            name="name"
+            placeholder="Ingresa un nombre"
+          />
+          <TextField
+            label="Apellido"
+            name="lastName"
+            placeholder="Ingresa un apellido"
+          />
+          <TextField
+            label="Email"
+            name="email"
+            placeholder="Ingresa un email"
+          />
+          <TextField
+            label="Contraseña"
+            name="password"
+            placeholder="Ingresa una contraseña"
+            type="password"
+          />
+          <TextField
+            label="Telefono"
+            name="phone"
+            placeholder="Ingresa un telefono"
+          />
+          {error && <P color="warning">{error}</P>}
+          <Button text="REGISTRARSE" />
+        </x.div>
       </Form>
     </Layout>
   )

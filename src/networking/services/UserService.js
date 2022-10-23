@@ -2,7 +2,7 @@ import { router } from '../axios'
 
 export class UserService {
   static async getCurrentUser({ where: { id, rol }, data: { accessToken } }) {
-    return await router.get(`/${rol}s/${id}`, {
+    return await router.get(`/${rol.toLowerCase()}s/${id}`, {
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },
@@ -13,7 +13,7 @@ export class UserService {
     where: { id, rol },
     data: { accessToken, ...userData },
   }) {
-    return await router.patch(`/${rol}s/${id}`, userData, {
+    return await router.patch(`/${rol.toLowerCase()}s/${id}`, userData, {
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },
@@ -21,7 +21,7 @@ export class UserService {
   }
 
   static async deleteUser({ where: { id, rol }, data: { accessToken } }) {
-    return await router.delete(`/${rol}s/${id}`, {
+    return await router.delete(`/${rol.toLowerCase()}s/${id}`, {
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },

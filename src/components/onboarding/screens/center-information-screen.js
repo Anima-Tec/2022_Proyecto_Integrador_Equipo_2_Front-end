@@ -2,7 +2,7 @@ import { x } from '@xstyled/styled-components'
 import { H2, P } from 'components/font-styles'
 import PropTypes from 'prop-types'
 import { ContactButton } from 'components/buttons/ContactButton'
-import { NeedFoodList } from 'components/centers/NeedFoodsList'
+import { NeedList } from 'components/centers/NeedList'
 import { StepCounter } from 'components/StepCounter'
 
 export const CenterInformationScreen = ({ step }) => {
@@ -35,7 +35,7 @@ export const CenterInformationScreen = ({ step }) => {
             Trueba 2345 esquina Maldonado
           </P>
         </x.div>
-        <NeedFoodList foods={foods} />
+        <NeedList foods={foods} />
         <ContactButton type="GMAIL" mb="30px" mt="42px" cursor="default" />
         <ContactButton type="WHATSAPP" mb="30px" cursor="default" />
       </x.div>
