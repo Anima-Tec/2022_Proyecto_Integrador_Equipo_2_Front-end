@@ -169,7 +169,7 @@ const Dashboard = () => {
               name={center.name}
               foods={center.foods}
               numberVolunteersRequired={center.numberVolunteersRequired}
-              onClick={() => navigate(`/center/${center.id}`)}
+              onClick={() => navigate(`/centers/${center.id}`)}
             />
           ))}
         </x.div>
