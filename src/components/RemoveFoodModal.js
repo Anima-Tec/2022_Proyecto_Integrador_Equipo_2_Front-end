@@ -6,6 +6,7 @@ import PropTypes from 'prop-types'
 import { useAuth } from 'contexts/auth'
 import { useMutation } from 'react-query'
 import { CenterService } from 'networking/services/CenterService'
+import toast from 'react-hot-toast'
 
 export function RemoveFoodModal({
   food,
@@ -40,8 +41,9 @@ export function RemoveFoodModal({
       })
       onAfterSubmit()
       hideModal()
+      toast.success('Alimento removido correctamente')
     } catch (err) {
-      console.log(err)
+      toast.error('Ocurrio un error, intente nuevamente')
     }
   }
 

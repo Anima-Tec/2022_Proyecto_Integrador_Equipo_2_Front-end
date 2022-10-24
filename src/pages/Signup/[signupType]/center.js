@@ -7,7 +7,7 @@ import {
   validateImage,
 } from 'validations/center-validations'
 import { Button } from 'components/buttons/Button'
-import { H1, P } from 'components/font-styles'
+import { H1 } from 'components/font-styles'
 import { useSignUp } from 'hooks/auth/mutations/useSignUp'
 import { useState } from 'react'
 import { FileField } from 'components/FileField'
@@ -16,7 +16,7 @@ import { useDepartments } from 'hooks/departments/queries/getDepartments'
 import { SelectZones } from 'components/SelectZones'
 
 const Register = () => {
-  const [mutateAsync, error] = useSignUp()
+  const { mutateAsync: signUpMutation } = useSignUp()
   const { data: departments } = useDepartments()
 
   const [departmentSelected, setDepartmentSelected] = useState({
@@ -37,7 +37,7 @@ const Register = () => {
 
   const handleSubmit = async formData => {
     try {
-      await mutateAsync(formData)
+      await signUpMutation(formData)
     } catch (err) {
       console.log(err)
     }
@@ -194,7 +194,6 @@ const Register = () => {
                 m="auto"
               />
             )}
-            {error && <P color="warning">{error}</P>}
             <Button text="REGISTRARSE" />
           </x.div>
         </Form>

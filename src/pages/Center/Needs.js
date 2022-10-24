@@ -14,6 +14,7 @@ import { useMutation } from 'react-query'
 import { UserService } from 'networking/services/UserService'
 import { useAuth } from 'contexts/auth'
 import { TickCircle } from 'components/icons'
+import toast from 'react-hot-toast'
 
 const CenterFoods = () => {
   const {
@@ -50,7 +51,10 @@ const CenterFoods = () => {
 
   const handleOnSubmit = async data => {
     try {
-      if (data.numberVolunteersRequired !== center?.numberVolunteersRequired) {
+      if (
+        data.numberVolunteersRequired !==
+        center?.numberVolunteersRequired.toString()
+      ) {
         await updateCenterMutation({
           where: { id: currentUser.id, rol: currentUser.rol },
           data: {
@@ -59,7 +63,9 @@ const CenterFoods = () => {
           },
         })
         refetchDataCenter()
+        return toast.success('Datos actualizados correctamente')
       }
+      toast.error('Debe cambiar el valor actual')
     } catch (error) {
       console.log(error)
     }

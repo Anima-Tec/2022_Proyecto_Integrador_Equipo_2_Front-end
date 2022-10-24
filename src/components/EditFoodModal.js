@@ -11,6 +11,7 @@ import PropTypes from 'prop-types'
 import { CenterService } from 'networking/services/CenterService'
 import { useMutation } from 'react-query'
 import { useAuth } from 'contexts/auth'
+import toast from 'react-hot-toast'
 
 export function EditFoodModal({
   intialValues,
@@ -19,7 +20,6 @@ export function EditFoodModal({
   onAfterSubmit,
 }) {
   const { accessToken } = useAuth()
-  const [error, setError] = useState(null)
   const [unitMeasurementSelected, setUnitMeasurementSelected] = useState(null)
   const unitMeasurements = ['KG', 'BAG', 'G', 'ML', 'L']
 
@@ -33,7 +33,6 @@ export function EditFoodModal({
       isEditFood: false,
       isRemoveFood: false,
     })
-    setError(null)
   }
 
   const handleOnSubmit = async foodFormData => {
@@ -42,7 +41,7 @@ export function EditFoodModal({
         foodFormData.amount === intialValues.amount.toString() &&
         foodFormData.unitMeasurement === intialValues.unitMeasurement
       ) {
-        return setError('Debes por lo menos cambiar un campo')
+        return toast.error('Debes por lo menos cambiar un campo')
       }
       await updateFoodMutation({
         where: {
@@ -57,8 +56,9 @@ export function EditFoodModal({
       })
       onAfterSubmit()
       hideModal()
+      toast.success('Datos modificados correctamente')
     } catch (err) {
-      console.log(err)
+      toast.error('Ocurrio un error, intente nuevamente')
     }
   }
 
@@ -88,16 +88,9 @@ export function EditFoodModal({
             />
           </x.div>
         </x.div>
-        <x.div display="flex" flexDirection="column" gap="39px" mt="60px">
-          {error && (
-            <P textAlign="center" color="warning">
-              {error}
-            </P>
-          )}
-          <x.div display="flex" gap="39px">
-            <Button text="CANCELAR" onClick={hideModal} type="button" />
-            <Button text="GUARDAR" type="submit" />
-          </x.div>
+        <x.div display="flex" gap="39px" mt="60px">
+          <Button text="CANCELAR" onClick={hideModal} type="button" />
+          <Button text="GUARDAR" type="submit" />
         </x.div>
       </Form>
     </Modal>

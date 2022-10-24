@@ -11,13 +11,13 @@ import PropTypes from 'prop-types'
 import { CenterService } from 'networking/services/CenterService'
 import { useMutation } from 'react-query'
 import { useAuth } from 'contexts/auth'
+import toast from 'react-hot-toast'
 
 export function AddFoodModal({ showModal, setShowFoodModal, onAfterSubmit }) {
   const {
     accessToken,
     user: { id },
   } = useAuth()
-  const [error, setError] = useState(null)
   const [unitMeasurementSelected, setUnitMeasurementSelected] = useState(null)
   const unitMeasurements = ['KG', 'BAG', 'G', 'ML', 'L']
 
@@ -41,8 +41,9 @@ export function AddFoodModal({ showModal, setShowFoodModal, onAfterSubmit }) {
       })
       onAfterSubmit()
       hideModal()
+      toast.success('Alimento agregado correctamente')
     } catch (error) {
-      setError(error?.response?.data?.message)
+      toast.error(error?.response?.data?.message)
     }
   }
 
@@ -74,16 +75,9 @@ export function AddFoodModal({ showModal, setShowFoodModal, onAfterSubmit }) {
             />
           </x.div>
         </x.div>
-        <x.div display="flex" flexDirection="column" gap="39px" mt="60px">
-          {error && (
-            <P textAlign="center" color="warning">
-              {error}
-            </P>
-          )}
-          <x.div display="flex" gap="39px">
-            <Button text="CANCELAR" onClick={hideModal} type="button" />
-            <Button text="GUARDAR" type="submit" />
-          </x.div>
+        <x.div display="flex" gap="39px" mt="60px">
+          <Button text="CANCELAR" onClick={hideModal} type="button" />
+          <Button text="AGREGAR" type="submit" />
         </x.div>
       </Form>
     </Modal>
