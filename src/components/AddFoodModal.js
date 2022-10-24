@@ -26,7 +26,11 @@ export function AddFoodModal({ showModal, setShowFoodModal, onAfterSubmit }) {
   )
 
   const hideModal = () => {
-    setShowFoodModal(false)
+    setShowFoodModal({
+      isAddFood: false,
+      isEditFood: false,
+      isRemoveFood: false,
+    })
   }
 
   const handleOnSubmit = async foodFormData => {

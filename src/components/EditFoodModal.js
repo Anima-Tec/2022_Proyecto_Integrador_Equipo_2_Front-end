@@ -28,7 +28,11 @@ export function EditFoodModal({
   )
 
   const hideModal = () => {
-    setShowFoodModal(false)
+    setShowFoodModal({
+      isAddFood: false,
+      isEditFood: false,
+      isRemoveFood: false,
+    })
     setError(null)
   }
 

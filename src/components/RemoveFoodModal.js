@@ -20,7 +20,11 @@ export function RemoveFoodModal({
   )
 
   const hideModal = () => {
-    setShowFoodModal(false)
+    setShowFoodModal({
+      isAddFood: false,
+      isEditFood: false,
+      isRemoveFood: false,
+    })
   }
 
   const removeFood = async () => {
