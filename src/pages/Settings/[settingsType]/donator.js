@@ -36,9 +36,7 @@ const Register = () => {
         return toast.success('Datos actualizados')
       }
       toast.error('Debe por lo menos cambiar un campo')
-    } catch (err) {
-      console.log(err)
-    }
+    } catch (error) {}
   }
 
   return (
