@@ -20,7 +20,7 @@ export const useLogin = () => {
         isAuthenticated: true,
       })
 
-      navigate('/')
+      navigate(user.onboardingStepPosition !== -1 ? '/onboarding' : '/')
     },
     onError: ({ response: { data } }) => setError(data.message),
   })
