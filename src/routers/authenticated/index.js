@@ -8,6 +8,7 @@ const Dashboard = lazy(() => import('pages/Dashboard'))
 const Onboarding = lazy(() => import('pages/Onboarding'))
 const Page404 = lazy(() => import('pages/Error404'))
 const CenterInformation = lazy(() => import('pages/Center/[centerId]'))
+const CenterNeeds = lazy(() => import('pages/Center/Needs'))
 
 export function Authenticated() {
   const { isLoading, data: user } = useCurrentUser()
@@ -39,6 +40,9 @@ export function Authenticated() {
                 path="/centers/:centerId"
                 element={<CenterInformation />}
               />
+              {user.rol === 'CENTER' && (
+                <Route exact path="/needs" element={<CenterNeeds />} />
+              )}
             </>
           )}
           <Route exact path="*" element={<Page404 />} />

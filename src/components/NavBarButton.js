@@ -8,7 +8,7 @@ const NavBarButton = ({ page, text, active, children }) => {
   const iconPage = {
     home: <Home color={active ? 'white' : undefined} />,
     dashboard: <Center color={active ? 'white' : undefined} />,
-    list: <List color={active ? 'white' : undefined} />,
+    needs: <List color={active ? 'white' : undefined} />,
     settings: <Settings color={active ? 'white' : undefined} />,
   }
 
