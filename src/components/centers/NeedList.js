@@ -3,6 +3,14 @@ import { P } from 'components/font-styles'
 import PropTypes from 'prop-types'
 
 const NeedList = ({ foods, numberVolunteersRequired }) => {
+  const unitMeasurement = {
+    KG: 'Kilogramos',
+    BAG: 'Bolsas',
+    G: 'Gramos',
+    ML: 'Mililitos',
+    L: 'Litros',
+  }
+
   return (
     <x.div w="100%" display="grid" gap="25px">
       {numberVolunteersRequired !== 0 && (
@@ -26,7 +34,8 @@ const NeedList = ({ foods, numberVolunteersRequired }) => {
                 key={food.id ?? index}
                 mb={index !== foods.length - 1 && '15px'}
               >
-                {food.amount} {food.unitMeasurement} de {food.name}
+                {food.amount} {unitMeasurement[food.unitMeasurement]} de{' '}
+                {food.name}
               </x.li>
             ))}
           </x.ul>
