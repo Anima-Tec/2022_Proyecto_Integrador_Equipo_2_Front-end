@@ -17,5 +17,5 @@ export function H3({ children, ...rest }) {
 }
 
 H3.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
 }

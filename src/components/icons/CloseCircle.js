@@ -1,11 +1,12 @@
 import { theme } from 'config/theme'
 import PropTypes from 'prop-types'
+import { x } from '@xstyled/styled-components'
 
 const { colors } = theme
 
 export function CloseCircle({ color = 'icon-black', ...rest }) {
   return (
-    <svg
+    <x.svg
       width="22"
       height="21"
       viewBox="0 0 22 21"
@@ -35,7 +36,7 @@ export function CloseCircle({ color = 'icon-black', ...rest }) {
         strokeLinecap="round"
         strokeLinejoin="round"
       />
-    </svg>
+    </x.svg>
   )
 }
 

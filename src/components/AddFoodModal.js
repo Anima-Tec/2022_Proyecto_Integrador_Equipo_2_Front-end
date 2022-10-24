@@ -5,72 +5,58 @@ import { Form } from './Form'
 import { TextField } from './TextField'
 import { SelectUnitMeasurement } from './SelectUnitMeasurement'
 import { useState } from 'react'
-import { EditFoodInputs } from 'validations/food-validations'
+import { CreateFoodInputs } from 'validations/food-validations'
 import { Modal } from './Modal'
 import PropTypes from 'prop-types'
 import { CenterService } from 'networking/services/CenterService'
 import { useMutation } from 'react-query'
 import { useAuth } from 'contexts/auth'
 
-export function EditFoodModal({
-  intialValues,
-  showModal,
-  setShowFoodModal,
-  onAfterSubmit,
-}) {
-  const { accessToken } = useAuth()
+export function AddFoodModal({ showModal, setShowFoodModal, onAfterSubmit }) {
+  const {
+    accessToken,
+    user: { id },
+  } = useAuth()
   const [error, setError] = useState(null)
   const [unitMeasurementSelected, setUnitMeasurementSelected] = useState(null)
   const unitMeasurements = ['KG', 'BAG', 'G', 'ML', 'L']
 
-  const { mutateAsync: updateFoodMutation } = useMutation(({ where, data }) =>
-    CenterService.updateFood({ where, data }),
+  const { mutateAsync: createFoodMutation } = useMutation(({ where, data }) =>
+    CenterService.createFood({ where, data }),
   )
 
   const hideModal = () => {
     setShowFoodModal(false)
-    setError(null)
   }
 
   const handleOnSubmit = async foodFormData => {
     try {
-      if (
-        foodFormData.amount === intialValues.amount.toString() &&
-        foodFormData.unitMeasurement === intialValues.unitMeasurement
-      ) {
-        return setError('Debes por lo menos cambiar un campo')
-      }
-      await updateFoodMutation({
-        where: {
-          foodId: intialValues.id,
-          centerId: intialValues.centerId,
-        },
-        data: {
-          amount: foodFormData.amount,
-          unitMeasurement: foodFormData.unitMeasurement,
-          accessToken,
-        },
+      await createFoodMutation({
+        where: { centerId: id },
+        data: { ...foodFormData, accessToken },
       })
       onAfterSubmit()
       hideModal()
-    } catch (err) {
-      console.log(err)
+    } catch (error) {
+      setError(error?.response?.data?.message)
     }
   }
 
   return (
     <Modal hideModal={hideModal} isOpen={showModal}>
-      <H3 mb="40px">{intialValues.name}</H3>
-      <Form
-        onSubmit={data => handleOnSubmit(data)}
-        schema={EditFoodInputs}
-        defaultValues={intialValues}
-      >
+      <H3 mb="40px">Solicitar alimento</H3>
+      <Form onSubmit={data => handleOnSubmit(data)} schema={CreateFoodInputs}>
         <x.div display="grid" gap="36px" px="40px">
+          <TextField
+            label="Nombre"
+            name="name"
+            placeholder="Ingrese el nombre"
+            isDefault={false}
+          />
           <TextField
             label="Cantidad"
             name="amount"
-            placeholder="Ingrese cantidad"
+            placeholder="Ingrese la cantidad"
             isDefault={false}
           />
           <x.div display="flex" gap="64px">
@@ -106,8 +92,9 @@ const foodData = {
   amount: PropTypes.number,
   unitMeasurement: PropTypes.string,
 }
-EditFoodModal.propTypes = {
-  intialValues: PropTypes.shape(foodData).isRequired,
+
+AddFoodModal.propTypes = {
+  food: PropTypes.shape(foodData).isRequired,
   showModal: PropTypes.bool.isRequired,
   setShowFoodModal: PropTypes.func.isRequired,
   onAfterSubmit: PropTypes.func.isRequired,

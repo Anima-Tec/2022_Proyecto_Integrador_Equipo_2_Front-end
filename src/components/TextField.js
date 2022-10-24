@@ -10,11 +10,12 @@ export function TextField({ isDefault = true, label, name, ...rest }) {
 
   return (
     <x.div
+      w="100%"
       display="flex"
       flexDirection={isDefault && 'column'}
       gap={!isDefault && '64px'}
     >
-      <x.label w={!isDefault && '50%'}>{label}</x.label>
+      {label && <x.label w={!isDefault && '50%'}>{label}</x.label>}
       <x.div w={!isDefault && '50%'} display="flex" flexDirection="column">
         <x.input
           w="100%"
@@ -26,7 +27,7 @@ export function TextField({ isDefault = true, label, name, ...rest }) {
           }}
           borderColor={errors[name] ? 'warning' : 'black'}
           pt={isDefault && '24px'}
-          pb={'6px'}
+          pb="6px"
           mb={errors[name] && 2}
           {...register(name)}
           {...rest}

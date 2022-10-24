@@ -43,7 +43,7 @@ export function CenterCard({
         w="100%"
         display="flex"
         flexDirection="column"
-        justifyContent="space-between"
+        justifyContent="space-around"
         fontSize={{ _: '12px', lg: '16px' }}
       >
         <P
