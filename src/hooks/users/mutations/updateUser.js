@@ -31,5 +31,5 @@ export const useUpdateUser = () => {
     },
   )
 
-  return [mutateAsync, error]
+  return { mutateAsync, error }
 }

@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom'
 const Onboarding = () => {
   const navigate = useNavigate()
   const { data: user, refetch: refetchUser } = useCurrentUser()
-  const [mutateAsync, error] = useUpdateUser()
+  const { mutateAsync: updateUserMutation, error } = useUpdateUser()
 
   if (error) {
     console.log(error)
@@ -39,7 +39,7 @@ const Onboarding = () => {
             buttonStyle="minimal"
             onClick={async () => {
               if (user?.onboardingStepPosition >= 0) {
-                await mutateAsync({
+                await updateUserMutation({
                   onboardingStepPosition: user?.onboardingStepPosition - 1,
                 })
                 refetchUser()
@@ -51,7 +51,7 @@ const Onboarding = () => {
           text="Siguiente"
           onClick={async () => {
             if (user?.onboardingStepPosition <= 3) {
-              await mutateAsync({
+              await updateUserMutation({
                 onboardingStepPosition:
                   user?.onboardingStepPosition === 3
                     ? -1

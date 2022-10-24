@@ -9,9 +9,20 @@ const Onboarding = lazy(() => import('pages/Onboarding'))
 const Page404 = lazy(() => import('pages/Error404'))
 const CenterInformation = lazy(() => import('pages/Center/[centerId]'))
 const CenterNeeds = lazy(() => import('pages/Center/Needs'))
+const DonatorSettings = lazy(() =>
+  import('pages/Settings/[settingsType]/donator'),
+)
+const CenterSettings = lazy(() =>
+  import('pages/Settings/[settingsType]/center'),
+)
 
 export function Authenticated() {
   const { isLoading, data: user } = useCurrentUser()
+
+  const settingsType = {
+    CENTER: <CenterSettings />,
+    DONATOR: <DonatorSettings />,
+  }
 
   return (
     <Suspense fallback={<FullScreenLoader />}>
@@ -43,6 +54,7 @@ export function Authenticated() {
               {user.rol === 'CENTER' && (
                 <Route exact path="/needs" element={<CenterNeeds />} />
               )}
+              <Route exact path="/settings" element={settingsType[user.rol]} />
             </>
           )}
           <Route exact path="*" element={<Page404 />} />

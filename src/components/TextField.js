@@ -2,7 +2,13 @@ import PropTypes from 'prop-types'
 import { x } from '@xstyled/styled-components'
 import { useFormContext } from 'react-hook-form'
 
-export function TextField({ isDefault = true, label, name, ...rest }) {
+export function TextField({
+  onChange,
+  isDefault = true,
+  label,
+  name,
+  ...rest
+}) {
   const {
     register,
     formState: { errors },
@@ -29,7 +35,9 @@ export function TextField({ isDefault = true, label, name, ...rest }) {
           pt={isDefault && '24px'}
           pb="6px"
           mb={errors[name] && 2}
-          {...register(name)}
+          {...register(name, {
+            onChange,
+          })}
           {...rest}
         />
         {errors[name] && (
@@ -41,6 +49,7 @@ export function TextField({ isDefault = true, label, name, ...rest }) {
 }
 
 TextField.propTypes = {
+  onChange: PropTypes.func,
   isDefault: PropTypes.bool,
   label: PropTypes.string,
   name: PropTypes.string.isRequired,
