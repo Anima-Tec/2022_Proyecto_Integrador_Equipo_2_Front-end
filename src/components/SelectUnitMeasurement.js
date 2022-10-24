@@ -8,6 +8,14 @@ export const SelectUnitMeasurement = ({
   getUnitMeasurementSelected,
   ...rest
 }) => {
+  const unitMeasurementDiccionary = {
+    KG: 'Kilogramos',
+    BAG: 'Bolsas',
+    G: 'Gramos',
+    ML: 'Mililitos',
+    L: 'Litros',
+  }
+
   const handleOnChange = e => {
     const unitMeasurementSelected = e.target.value
 
@@ -24,7 +32,7 @@ export const SelectUnitMeasurement = ({
       >
         {unitMeasurements.map((unitMeasurement, index) => (
           <x.option key={index} value={unitMeasurement}>
-            {unitMeasurement}
+            {unitMeasurementDiccionary[unitMeasurement]}
           </x.option>
         ))}
       </Select>
