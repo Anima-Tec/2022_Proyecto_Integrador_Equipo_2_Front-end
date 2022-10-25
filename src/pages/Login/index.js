@@ -2,17 +2,17 @@ import { x } from '@xstyled/styled-components'
 import { Layout } from 'core/Layout'
 import { Form } from 'components/Form'
 import { TextField } from 'components/TextField'
-import { DonatorLoginInputs } from 'validations/donator-validations'
 import { Link } from 'react-router-dom'
 import { Button } from 'components/buttons/Button'
 import { H1 } from 'components/font-styles'
 import { useLogin } from 'hooks/auth/mutations/useLogin'
 import { GoogleLogin } from '@react-oauth/google'
+import { LoginInputs } from 'validations/login-validations'
 
 const Login = () => {
   const { mutateAsync: loginMutation } = useLogin()
 
-  const handdleSubmit = async data => {
+  const handdleSubmit = async formData => {
     try {
       await loginMutation(formData)
     } catch (err) {
@@ -25,7 +25,7 @@ const Login = () => {
       <H1 w="100%" mb="65px">
         Iniciar sesión
       </H1>
-      <Form schema={DonatorLoginInputs} onSubmit={data => handdleSubmit(data)}>
+      <Form schema={LoginInputs} onSubmit={data => handdleSubmit(data)}>
         <x.div display="flex" flexDirection="column" gap="40px">
           <TextField
             label="Email"
