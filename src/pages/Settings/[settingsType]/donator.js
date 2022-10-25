@@ -7,7 +7,7 @@ import { H1, P } from 'components/font-styles'
 import { x } from '@xstyled/styled-components'
 import { useCurrentUser } from 'hooks/users/queries/getCurrentUser'
 import { useUpdateUser } from 'hooks/users/mutations/updateUser'
-import toast, { Toaster } from 'react-hot-toast'
+import toast from 'react-hot-toast'
 import { useState } from 'react'
 
 const Register = () => {
@@ -42,7 +42,6 @@ const Register = () => {
   return (
     !isLoading && (
       <Layout>
-        <Toaster />
         <H1 w="100%" mb="65px">
           Ajustes
         </H1>

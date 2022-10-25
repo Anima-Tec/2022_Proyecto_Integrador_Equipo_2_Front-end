@@ -1,12 +1,11 @@
-import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useMutation } from 'react-query'
 import { useAuth } from 'contexts/auth'
 import { AuthService } from 'networking/services/AuthService'
+import toast from 'react-hot-toast'
 
 export const useLogin = () => {
   const navigate = useNavigate()
-  const [error, setError] = useState('')
   const { setState } = useAuth()
 
   const { mutateAsync } = useMutation(data => AuthService.login(data), {
@@ -20,10 +19,12 @@ export const useLogin = () => {
         isAuthenticated: true,
       })
 
+      toast.success('Login exitoso')
+
       navigate(user.onboardingStepPosition !== -1 ? '/onboarding' : '/')
     },
-    onError: ({ response: { data } }) => setError(data.message),
+    onError: ({ response: { data } }) => toast.error(data.message),
   })
 
-  return [mutateAsync, error]
+  return { mutateAsync }
 }
