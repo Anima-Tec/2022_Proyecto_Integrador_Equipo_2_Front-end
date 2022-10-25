@@ -3,16 +3,16 @@ import { Form } from 'components/Form'
 import { TextField } from 'components/TextField'
 import { Layout } from 'core/Layout'
 import { Button } from 'components/buttons/Button'
-import { H1, P } from 'components/font-styles'
+import { H1 } from 'components/font-styles'
 import { useSignUp } from 'hooks/auth/mutations/useSignUp'
 import { x } from '@xstyled/styled-components'
 
 const Register = () => {
-  const [mutateAsync, error] = useSignUp()
+  const { mutateAsync: signUpMutation } = useSignUp()
 
   const handdleSubmit = async formData => {
     try {
-      await mutateAsync(formData)
+      await signUpMutation(formData)
     } catch (err) {
       console.log(err)
     }
@@ -49,12 +49,6 @@ const Register = () => {
             placeholder="Ingresa una contraseña"
             type="password"
           />
-          <TextField
-            label="Telefono"
-            name="phone"
-            placeholder="Ingresa un telefono"
-          />
-          {error && <P color="warning">{error}</P>}
           <Button text="REGISTRARSE" />
         </x.div>
       </Form>

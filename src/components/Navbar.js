@@ -51,17 +51,11 @@ export function Navbar() {
           active={currentPage('/dashboard')}
         />
         {user?.rol === 'CENTER' && (
-          <NavBarButton page="foods" active={currentPage('/foods')}>
-            <P
-              fontSize={{ _: '12px', lg: '14px' }}
-              display={{ lg: 'flex' }}
-              justifyContent={{ lg: 'center' }}
-              alignItems={{ lg: 'center' }}
-              flexDirection={{ lg: 'column' }}
-            >
-              Lista de <x.span>alimentos</x.span>
-            </P>
-          </NavBarButton>
+          <NavBarButton
+            page="needs"
+            text="Necesidades"
+            active={currentPage('/needs')}
+          />
         )}
         <NavBarButton
           page="settings"

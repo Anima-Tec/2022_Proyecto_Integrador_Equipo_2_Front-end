@@ -5,16 +5,16 @@ import { TextField } from 'components/TextField'
 import { DonatorLoginInputs } from 'validations/donator-validations'
 import { Link } from 'react-router-dom'
 import { Button } from 'components/buttons/Button'
-import { H1, P } from 'components/font-styles'
+import { H1 } from 'components/font-styles'
 import { useLogin } from 'hooks/auth/mutations/useLogin'
 import { GoogleLogin } from '@react-oauth/google'
 
 const Login = () => {
-  const [mutateAsync, error] = useLogin()
+  const { mutateAsync: loginMutation } = useLogin()
 
   const handdleSubmit = async data => {
     try {
-      await mutateAsync(data)
+      await loginMutation(formData)
     } catch (err) {
       console.log(err)
     }
@@ -38,7 +38,6 @@ const Login = () => {
             placeholder="Ingresa una contraseña"
             type="password"
           />
-          {error && <P color="warning">{error}</P>}
           <Button text="INICIAR SESIÓN" />
         </x.div>
       </Form>

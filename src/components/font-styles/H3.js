@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 export function H3({ children, ...rest }) {
   return (
     <x.h3
-      fontFamily="IBM Plex Sans"
+      fontFamily="Inter"
       fontWeight="medium"
       fontStyle="normal"
       fontSize="1rem"
@@ -17,5 +17,5 @@ export function H3({ children, ...rest }) {
 }
 
 H3.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
 }

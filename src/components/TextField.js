@@ -2,36 +2,55 @@ import PropTypes from 'prop-types'
 import { x } from '@xstyled/styled-components'
 import { useFormContext } from 'react-hook-form'
 
-export function TextField({ label, name, ...rest }) {
+export function TextField({
+  onChange,
+  isDefault = true,
+  label,
+  name,
+  ...rest
+}) {
   const {
     register,
     formState: { errors },
   } = useFormContext()
 
   return (
-    <x.div display="flex" flexDirection="column">
-      <x.label>{label}</x.label>
-      <x.input
-        outline="none"
-        borderBottom={1}
-        color={{ placeholder: errors[name] && 'warning' }}
-        borderColor={errors[name] ? 'warning' : 'black'}
-        pt="24px"
-        pb="6px"
-        mb={errors[name] && 2}
-        {...register(name)}
-        {...rest}
-      />
-      {errors[name] && (
-        <x.small color="warning">{errors[name].message}</x.small>
-      )}
+    <x.div
+      w="100%"
+      display="flex"
+      flexDirection={isDefault && 'column'}
+      gap={!isDefault && '64px'}
+    >
+      {label && <x.label w={!isDefault && '50%'}>{label}</x.label>}
+      <x.div w={!isDefault && '50%'} display="flex" flexDirection="column">
+        <x.input
+          w="100%"
+          outline="none"
+          borderBottom={1}
+          color={{
+            _: errors[name] && 'warning',
+            placeholder: errors[name] && 'warning',
+          }}
+          borderColor={errors[name] ? 'warning' : 'black'}
+          pt={isDefault && '24px'}
+          pb="6px"
+          mb={errors[name] && 2}
+          {...register(name, {
+            onChange,
+          })}
+          {...rest}
+        />
+        {errors[name] && (
+          <x.small color="warning">{errors[name].message}</x.small>
+        )}
+      </x.div>
     </x.div>
   )
 }
 
 TextField.propTypes = {
+  onChange: PropTypes.func,
+  isDefault: PropTypes.bool,
   label: PropTypes.string,
-  register: PropTypes.any,
-  name: PropTypes.string,
-  errors: PropTypes.any,
+  name: PropTypes.string.isRequired,
 }

@@ -10,6 +10,7 @@ import { SelectDepartments } from 'components/SelectDepartments'
 import { SelectZones } from 'components/SelectZones'
 import { SearchBar } from 'components/SearchBar'
 import { useDepartments } from 'hooks/departments/queries/getDepartments'
+import { CloseCircle } from 'components/icons/CloseCircle'
 
 const Dashboard = () => {
   const navigate = useNavigate()
@@ -30,6 +31,22 @@ const Dashboard = () => {
     centerName: undefined,
     departmentSelected,
   })
+
+  const clearFilters = () => {
+    setDepartmentSelected({
+      name: null,
+      zoneSelected: {
+        id: null,
+        departmentId: null,
+        name: null,
+      },
+      zones: [],
+    })
+    setCenterQuery({
+      centerName: undefined,
+      departmentSelected,
+    })
+  }
 
   // TODO: Refactor this with querys on the Backend
   const filterCenters = centerQuery => {
@@ -156,6 +173,19 @@ const Dashboard = () => {
                 borderRadius={20}
                 boxShadow="0px 4px 20px rgba(0, 0, 0, 0.1)"
               />
+              {textQueryResult && (
+                <x.button
+                  bg="white"
+                  py="11px"
+                  px="41px"
+                  borderRadius={20}
+                  boxShadow="0px 4px 20px rgba(0, 0, 0, 0.1)"
+                  outline="none"
+                  onClick={clearFilters}
+                >
+                  <CloseCircle />
+                </x.button>
+              )}
             </x.div>
           </x.div>
         </Form>
@@ -169,7 +199,7 @@ const Dashboard = () => {
               name={center.name}
               foods={center.foods}
               numberVolunteersRequired={center.numberVolunteersRequired}
-              onClick={() => navigate(`/center/${center.id}`)}
+              onClick={() => navigate(`/centers/${center.id}`)}
             />
           ))}
         </x.div>

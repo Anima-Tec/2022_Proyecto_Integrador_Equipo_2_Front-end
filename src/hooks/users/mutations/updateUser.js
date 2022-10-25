@@ -27,9 +27,9 @@ export const useUpdateUser = () => {
         }))
         SessionService.updateLocalUser(data)
       },
-      onError: response => setError(response),
+      onError: ({ response }) => setError(response?.data?.message),
     },
   )
 
-  return [mutateAsync, error]
+  return { mutateAsync, error }
 }
