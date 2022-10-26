@@ -26,10 +26,6 @@ const Index = () => {
           gap="40px"
         >
           <Logo width="303px" height="303px" />
-          <P textAlign="center" w="80%">
-            Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem
-            Lorem
-          </P>
         </x.div>
         <x.div
           display="flex"

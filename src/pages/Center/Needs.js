@@ -58,7 +58,7 @@ const CenterFoods = () => {
         await updateCenterMutation({
           where: { id: currentUser.id, rol: currentUser.rol },
           data: {
-            ...data,
+            numberVolunteersRequired: Number(data.numberVolunteersRequired),
             accessToken,
           },
         })

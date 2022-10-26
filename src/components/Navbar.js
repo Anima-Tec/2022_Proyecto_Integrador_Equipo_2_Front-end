@@ -44,7 +44,7 @@ export function Navbar() {
         justifyContent={{ _: 'space-evenly', lg: 'unset' }}
         gap={{ lg: '34px' }}
       >
-        <NavBarButton page="home" text="Inicio" active={currentPage('/home')} />
+        {/* <NavBarButton page="home" text="Inicio" active={currentPage('/home')} /> */}
         <NavBarButton
           page="dashboard"
           text="Centros"
