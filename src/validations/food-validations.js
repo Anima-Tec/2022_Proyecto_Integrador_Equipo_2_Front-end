@@ -8,12 +8,12 @@ export const CreateFoodInputs = yup.object({
   amount: yup
     .string()
     .required('Debe ingresar una cantidad')
-    .matches(/^[0-9-+]+$/, 'Solo se permiten numeros'),
+    .matches(/^[1-9+]+$/, 'Solo se permiten numeros'),
 })
 
 export const EditFoodInputs = yup.object({
   amount: yup
     .string()
     .required('Debe ingresar una cantidad')
-    .matches(/^[0-9-+]+$/, 'Solo se permiten numeros'),
+    .matches(/^[1-9+]+$/, 'Solo se permiten numeros'),
 })

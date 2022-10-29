@@ -27,7 +27,7 @@ const CenterInformation = () => {
       {!isLoading && (
         <Layout>
           <H2 fontWeight="bold" mb="35px">
-            Banco Silertoll
+            {center?.name}
           </H2>
           {center?.description && (
             <P mb="35px" textAlign="justify">
