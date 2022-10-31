@@ -6,7 +6,7 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 import { GoogleOAuthProvider } from '@react-oauth/google'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from '_app'
+import App from 'App'
 
 const queryClient = new QueryClient()
 
