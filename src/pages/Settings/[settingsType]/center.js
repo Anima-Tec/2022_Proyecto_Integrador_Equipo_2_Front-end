@@ -15,12 +15,12 @@ import { useDepartments } from 'hooks/departments/queries/getDepartments'
 import { SelectZones } from 'components/SelectZones'
 import { useCurrentUser } from 'hooks/users/queries/getCurrentUser'
 import { useUpdateUser } from 'hooks/users/mutations/updateUser'
+import toast from 'react-hot-toast'
 
 const Register = () => {
   const { mutateAsync: updateUserMutation } = useUpdateUser()
   const { data: center, refetch: refetchCurrentUser } = useCurrentUser()
   const { data: departments } = useDepartments()
-  const [inititalValues, setInititalValues] = useState({})
   const [departmentSelected, setDepartmentSelected] = useState({
     name: null,
     zoneSelected: {
@@ -37,22 +37,70 @@ const Register = () => {
     input: null,
   })
 
+  const inititalValues = {
+    name: center?.user?.name,
+    email: center?.user?.email,
+    street: center?.street,
+    numberDoor: center?.numberDoor,
+    phone: center?.phone,
+    description: center?.description,
+    zoneId: center?.zoneId,
+    // photo: center?.photo,
+  }
+
   const handleSubmit = async formData => {
     try {
-      const { department, ...restData } = formData
-      await updateUserMutation(...restData)
+      await updateUserMutation(checkIfNotSameData(formData))
       refetchCurrentUser()
-    } catch (err) {
-      console.log(err)
+      toast.success('Datos actualizados')
+    } catch (error) {
+      toast.error(error.message)
     }
   }
+
+  const checkIfNotSameData = newData => {
+    let index = 0
+    const newObject = {}
+    Object.entries(newData).forEach(([key, value]) => {
+      if (value === inititalValues[key]) {
+        index++
+      } else {
+        Object.assign(newObject, {
+          [key]: value,
+        })
+      }
+
+      console.log(key, value)
+    })
+
+    if (index === Object.keys(inititalValues).length) {
+      throw new Error('Debes cambiar almenos un campo')
+    }
+    return newObject
+  }
+
+  // function dataURLtoFile(dataurl, filename) {
+  //   const arr = dataurl.split(',')
+  //   const mime = arr[0].match(/:(.*?);/)[1]
+  //   const bstr = atob(arr[1])
+  //   let n = bstr.length
+  //   const u8arr = new Uint8Array(n)
+
+  //   while (n--) {
+  //     u8arr[n] = bstr.charCodeAt(n)
+  //   }
+
+  //   return new File([u8arr], filename, { type: mime })
+  // }
+
+  // const file = dataURLtoFile(inititalValues.photo, `${center.name}`)
 
   useEffect(() => {
     const initialZones = departments?.find(
       department => department.name === center?.department?.name,
     )?.zones
 
-    const intialDepartament = {
+    const initialDepartament = {
       name: center?.department.name,
       zoneSelected: {
         id: center?.zone.id,
@@ -62,23 +110,14 @@ const Register = () => {
       zones: initialZones,
     }
 
-    const initialValues = {
-      name: center?.user?.name,
-      email: center?.user?.email,
-      street: center?.street,
-      numberDoor: center?.numberDoor,
-      phone: center?.phone,
-      description: center?.description,
-      department: intialDepartament,
-    }
-
-    setInititalValues(initialValues)
-    setDepartmentSelected(intialDepartament)
+    setDepartmentSelected(initialDepartament)
   }, [departments])
 
   return (
     center &&
-    departments && (
+    departments &&
+    inititalValues &&
+    departmentSelected.zones && (
       <Layout>
         <H1 w="100%" mb="65px">
           Ajustes
@@ -159,6 +198,7 @@ const Register = () => {
               <FileField
                 label="Adjuntar imagen del centro (opcional)"
                 name="photo"
+                // value={inititalValues.photo}
                 onChange={e => {
                   const file = e.target.files[0]
                   const isImage = validateImage(file)
